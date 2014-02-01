@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="9be31a83-1468-4ab4-bf1b-23ab68f62115" name="Jacob@MANTA 2014-01-31 10:13:52" runUser="MANTA\Jacob" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="7c6903b5-04f0-4edb-852a-89e5b22e03f9">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Jacob_MANTA 2014-01-31 10_13_52">
+      <DeploymentItem filename="C:\Users\Jacob\Documents\Visual Studio 2010\Projects\TTT_ClassLibrary\TTT_ClassLibrary\bin\Debug\TTT_ClassLibrary.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-01-31T10:13:52.3780863-06:00" queuing="2014-01-31T10:13:52.3870922-06:00" start="2014-01-31T10:13:52.3910951-06:00" finish="2014-01-31T10:13:52.6282645-06:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="11" executed="11" passed="11" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="CreateNewBoardShouldCreateA3x3TTTBoard" storage="c:\users\jacob\documents\visual studio 2010\projects\ttt_classlibrary\tictactoetests\bin\debug\tictactoetests.dll" id="c08bc9e4-6f3f-c8c1-4824-e6ff27ed7b61">
+      <Execution id="de9811e9-2165-4cdd-ae34-5f8164ecb89d" />
+      <TestMethod codeBase="C:/Users/Jacob/Documents/Visual Studio 2010/Projects/TTT_ClassLibrary/TicTacToeTests/bin/Debug/TicTacToeTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TicTacToeTests.BoardManagerTest, TicTacToeTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CreateNewBoardShouldCreateA3x3TTTBoard" />
+    </UnitTest>
+    <UnitTest name="AnnounceHMNWinnerTest" storage="c:\users\jacob\documents\visual studio 2010\projects\ttt_classlibrary\tictactoetests\bin\debug\tictactoetests.dll" id="e20f7559-c36c-21c3-ecc5-fa57a1b6e3c8">
+      <Execution id="82e9e857-8b8d-4589-83c8-0aa3177c15fd" />
+      <TestMethod codeBase="C:/Users/Jacob/Documents/Visual Studio 2010/Projects/TTT_ClassLibrary/TicTacToeTests/bin/Debug/TicTacToeTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TicTacToeTests.HumanPlayerTest, TicTacToeTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AnnounceHMNWinnerTest" />
+    </UnitTest>
+    <UnitTest name="BoardManagerConstructorTest" storage="c:\users\jacob\documents\visual studio 2010\projects\ttt_classlibrary\tictactoetests\bin\debug\tictactoetests.dll" id="6c8d9547-9cf5-ce30-f528-0d7f7a2b20ed">
+      <Execution id="7d425a7d-da78-486d-b016-a4fcd477ad50" />
+      <TestMethod codeBase="C:/Users/Jacob/Documents/Visual Studio 2010/Projects/TTT_ClassLibrary/TicTacToeTests/bin/Debug/TicTacToeTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TicTacToeTests.BoardManagerTest, TicTacToeTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="BoardManagerConstructorTest" />
+    </UnitTest>
+    <UnitTest name="LogMoveShouldLogACreatedMove" storage="c:\users\jacob\documents\visual studio 2010\projects\ttt_classlibrary\tictactoetests\bin\debug\tictactoetests.dll" id="db1abdd6-8a26-8208-2578-47bc52c7c661">
+      <Execution id="3d5d9f92-0c46-4e6e-93b9-578e36812c03" />
+      <TestMethod codeBase="C:/Users/Jacob/Documents/Visual Studio 2010/Projects/TTT_ClassLibrary/TicTacToeTests/bin/Debug/TicTacToeTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TicTacToeTests.BoardManagerTest, TicTacToeTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="LogMoveShouldLogACreatedMove" />
+    </UnitTest>
+    <UnitTest name="ShouldBeAbleToCreatePlayersForO" storage="c:\users\jacob\documents\visual studio 2010\projects\ttt_classlibrary\tictactoetests\bin\debug\tictactoetests.dll" id="4b28711c-31b6-7bcd-ac1e-7cb151c1f762">
+      <Execution id="20bd82f7-c9b2-4f5c-85c6-2c5b3c7fec63" />
+      <TestMethod codeBase="C:/Users/Jacob/Documents/Visual Studio 2010/Projects/TTT_ClassLibrary/TicTacToeTests/bin/Debug/TicTacToeTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TicTacToeTests.HumanPlayerTest, TicTacToeTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ShouldBeAbleToCreatePlayersForO" />
+    </UnitTest>
+    <UnitTest name="BoardManagerShouldKnowIfThereIsATie" storage="c:\users\jacob\documents\visual studio 2010\projects\ttt_classlibrary\tictactoetests\bin\debug\tictactoetests.dll" id="f3771781-71c0-bdd1-ec6a-66abebe08aea">
+      <Execution id="fd680921-1756-4769-9d43-63c0ceabc07a" />
+      <TestMethod codeBase="C:/Users/Jacob/Documents/Visual Studio 2010/Projects/TTT_ClassLibrary/TicTacToeTests/bin/Debug/TicTacToeTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TicTacToeTests.BoardManagerTest, TicTacToeTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="BoardManagerShouldKnowIfThereIsATie" />
+    </UnitTest>
+    <UnitTest name="CheckForWinShouldReturnTrueIfThereAreThreeXsInARow" storage="c:\users\jacob\documents\visual studio 2010\projects\ttt_classlibrary\tictactoetests\bin\debug\tictactoetests.dll" id="b7a15b1b-9010-af6d-2a52-6df94a79565a">
+      <Execution id="b12b6914-230a-4a94-8696-419d2365115f" />
+      <TestMethod codeBase="C:/Users/Jacob/Documents/Visual Studio 2010/Projects/TTT_ClassLibrary/TicTacToeTests/bin/Debug/TicTacToeTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TicTacToeTests.BoardManagerTest, TicTacToeTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CheckForWinShouldReturnTrueIfThereAreThreeXsInARow" />
+    </UnitTest>
+    <UnitTest name="CheckForWinShouldReturnTrueIfThereAreThreeOsInARow" storage="c:\users\jacob\documents\visual studio 2010\projects\ttt_classlibrary\tictactoetests\bin\debug\tictactoetests.dll" id="8c672f45-4e22-0fc1-118e-66f312d74edf">
+      <Execution id="4014080a-7258-4178-9427-6128b550a035" />
+      <TestMethod codeBase="C:/Users/Jacob/Documents/Visual Studio 2010/Projects/TTT_ClassLibrary/TicTacToeTests/bin/Debug/TicTacToeTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TicTacToeTests.BoardManagerTest, TicTacToeTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CheckForWinShouldReturnTrueIfThereAreThreeOsInARow" />
+    </UnitTest>
+    <UnitTest name="ConstructorShouldDefaultToX" storage="c:\users\jacob\documents\visual studio 2010\projects\ttt_classlibrary\tictactoetests\bin\debug\tictactoetests.dll" id="5796ba2d-0a22-8ee9-5ec5-effdc2680ab5">
+      <Execution id="67ea1019-9a89-4cbe-8e99-33ce6fa17047" />
+      <TestMethod codeBase="C:/Users/Jacob/Documents/Visual Studio 2010/Projects/TTT_ClassLibrary/TicTacToeTests/bin/Debug/TicTacToeTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TicTacToeTests.HumanPlayerTest, TicTacToeTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ConstructorShouldDefaultToX" />
+    </UnitTest>
+    <UnitTest name="AnnounceCPUWinnerTest" storage="c:\users\jacob\documents\visual studio 2010\projects\ttt_classlibrary\tictactoetests\bin\debug\tictactoetests.dll" id="2551480f-4119-30d8-7800-74078922867e">
+      <Execution id="f2773d66-cd16-4e5a-93d7-12654dd6dfdd" />
+      <TestMethod codeBase="C:/Users/Jacob/Documents/Visual Studio 2010/Projects/TTT_ClassLibrary/TicTacToeTests/bin/Debug/TicTacToeTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TicTacToeTests.ComputerPlayerTest, TicTacToeTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AnnounceCPUWinnerTest" />
+    </UnitTest>
+    <UnitTest name="MakeMoveShouldMakeACreatedMove" storage="c:\users\jacob\documents\visual studio 2010\projects\ttt_classlibrary\tictactoetests\bin\debug\tictactoetests.dll" id="0aff7c26-8441-3caa-a0cf-bf0199fb6a21">
+      <Execution id="48bf8f59-faab-4924-bf19-de195e50c82c" />
+      <TestMethod codeBase="C:/Users/Jacob/Documents/Visual Studio 2010/Projects/TTT_ClassLibrary/TicTacToeTests/bin/Debug/TicTacToeTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TicTacToeTests.HumanPlayerTest, TicTacToeTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="MakeMoveShouldMakeACreatedMove" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="6c8d9547-9cf5-ce30-f528-0d7f7a2b20ed" executionId="7d425a7d-da78-486d-b016-a4fcd477ad50" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2551480f-4119-30d8-7800-74078922867e" executionId="f2773d66-cd16-4e5a-93d7-12654dd6dfdd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="db1abdd6-8a26-8208-2578-47bc52c7c661" executionId="3d5d9f92-0c46-4e6e-93b9-578e36812c03" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8c672f45-4e22-0fc1-118e-66f312d74edf" executionId="4014080a-7258-4178-9427-6128b550a035" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f3771781-71c0-bdd1-ec6a-66abebe08aea" executionId="fd680921-1756-4769-9d43-63c0ceabc07a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5796ba2d-0a22-8ee9-5ec5-effdc2680ab5" executionId="67ea1019-9a89-4cbe-8e99-33ce6fa17047" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4b28711c-31b6-7bcd-ac1e-7cb151c1f762" executionId="20bd82f7-c9b2-4f5c-85c6-2c5b3c7fec63" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0aff7c26-8441-3caa-a0cf-bf0199fb6a21" executionId="48bf8f59-faab-4924-bf19-de195e50c82c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b7a15b1b-9010-af6d-2a52-6df94a79565a" executionId="b12b6914-230a-4a94-8696-419d2365115f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c08bc9e4-6f3f-c8c1-4824-e6ff27ed7b61" executionId="de9811e9-2165-4cdd-ae34-5f8164ecb89d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e20f7559-c36c-21c3-ecc5-fa57a1b6e3c8" executionId="82e9e857-8b8d-4589-83c8-0aa3177c15fd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="7d425a7d-da78-486d-b016-a4fcd477ad50" testId="6c8d9547-9cf5-ce30-f528-0d7f7a2b20ed" testName="BoardManagerConstructorTest" computerName="MANTA" duration="00:00:00.0096936" startTime="2014-01-31T10:13:52.3920958-06:00" endTime="2014-01-31T10:13:52.5341967-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7d425a7d-da78-486d-b016-a4fcd477ad50">
+    </UnitTestResult>
+    <UnitTestResult executionId="f2773d66-cd16-4e5a-93d7-12654dd6dfdd" testId="2551480f-4119-30d8-7800-74078922867e" testName="AnnounceCPUWinnerTest" computerName="MANTA" duration="00:00:00.0004263" startTime="2014-01-31T10:13:52.5341967-06:00" endTime="2014-01-31T10:13:52.5382000-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f2773d66-cd16-4e5a-93d7-12654dd6dfdd">
+    </UnitTestResult>
+    <UnitTestResult executionId="3d5d9f92-0c46-4e6e-93b9-578e36812c03" testId="db1abdd6-8a26-8208-2578-47bc52c7c661" testName="LogMoveShouldLogACreatedMove" computerName="MANTA" duration="00:00:00.0003262" startTime="2014-01-31T10:13:52.5382000-06:00" endTime="2014-01-31T10:13:52.5412016-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3d5d9f92-0c46-4e6e-93b9-578e36812c03">
+    </UnitTestResult>
+    <UnitTestResult executionId="4014080a-7258-4178-9427-6128b550a035" testId="8c672f45-4e22-0fc1-118e-66f312d74edf" testName="CheckForWinShouldReturnTrueIfThereAreThreeOsInARow" computerName="MANTA" duration="00:00:00.0013672" startTime="2014-01-31T10:13:52.5422019-06:00" endTime="2014-01-31T10:13:52.5462052-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4014080a-7258-4178-9427-6128b550a035">
+    </UnitTestResult>
+    <UnitTestResult executionId="fd680921-1756-4769-9d43-63c0ceabc07a" testId="f3771781-71c0-bdd1-ec6a-66abebe08aea" testName="BoardManagerShouldKnowIfThereIsATie" computerName="MANTA" duration="00:00:00.0005751" startTime="2014-01-31T10:13:52.5472055-06:00" endTime="2014-01-31T10:13:52.5502213-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fd680921-1756-4769-9d43-63c0ceabc07a">
+    </UnitTestResult>
+    <UnitTestResult executionId="67ea1019-9a89-4cbe-8e99-33ce6fa17047" testId="5796ba2d-0a22-8ee9-5ec5-effdc2680ab5" testName="ConstructorShouldDefaultToX" computerName="MANTA" duration="00:00:00.0003134" startTime="2014-01-31T10:13:52.5502213-06:00" endTime="2014-01-31T10:13:52.5532110-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="67ea1019-9a89-4cbe-8e99-33ce6fa17047">
+    </UnitTestResult>
+    <UnitTestResult executionId="20bd82f7-c9b2-4f5c-85c6-2c5b3c7fec63" testId="4b28711c-31b6-7bcd-ac1e-7cb151c1f762" testName="ShouldBeAbleToCreatePlayersForO" computerName="MANTA" duration="00:00:00.0001492" startTime="2014-01-31T10:13:52.5542126-06:00" endTime="2014-01-31T10:13:52.5572275-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="20bd82f7-c9b2-4f5c-85c6-2c5b3c7fec63">
+    </UnitTestResult>
+    <UnitTestResult executionId="48bf8f59-faab-4924-bf19-de195e50c82c" testId="0aff7c26-8441-3caa-a0cf-bf0199fb6a21" testName="MakeMoveShouldMakeACreatedMove" computerName="MANTA" duration="00:00:00.0002630" startTime="2014-01-31T10:13:52.5582137-06:00" endTime="2014-01-31T10:13:52.5602177-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="48bf8f59-faab-4924-bf19-de195e50c82c">
+    </UnitTestResult>
+    <UnitTestResult executionId="b12b6914-230a-4a94-8696-419d2365115f" testId="b7a15b1b-9010-af6d-2a52-6df94a79565a" testName="CheckForWinShouldReturnTrueIfThereAreThreeXsInARow" computerName="MANTA" duration="00:00:00.0005991" startTime="2014-01-31T10:13:52.5612162-06:00" endTime="2014-01-31T10:13:52.5642308-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b12b6914-230a-4a94-8696-419d2365115f">
+    </UnitTestResult>
+    <UnitTestResult executionId="de9811e9-2165-4cdd-ae34-5f8164ecb89d" testId="c08bc9e4-6f3f-c8c1-4824-e6ff27ed7b61" testName="CreateNewBoardShouldCreateA3x3TTTBoard" computerName="MANTA" duration="00:00:00.0003143" startTime="2014-01-31T10:13:52.5652238-06:00" endTime="2014-01-31T10:13:52.5682203-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="de9811e9-2165-4cdd-ae34-5f8164ecb89d">
+    </UnitTestResult>
+    <UnitTestResult executionId="82e9e857-8b8d-4589-83c8-0aa3177c15fd" testId="e20f7559-c36c-21c3-ecc5-fa57a1b6e3c8" testName="AnnounceHMNWinnerTest" computerName="MANTA" duration="00:00:00.0003262" startTime="2014-01-31T10:13:52.5682203-06:00" endTime="2014-01-31T10:13:52.5722232-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="82e9e857-8b8d-4589-83c8-0aa3177c15fd">
+    </UnitTestResult>
+  </Results>
+</TestRun>

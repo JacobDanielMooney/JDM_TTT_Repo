@@ -1,0 +1,5 @@
+c:\users\jacob\documents\visual studio 2010\Projects\TTT_ClassLibrary\TTT_ClassLibrary\bin\Debug\TTT_ClassLibrary.dll
+c:\users\jacob\documents\visual studio 2010\Projects\TTT_ClassLibrary\TTT_ClassLibrary\bin\Debug\TTT_ClassLibrary.pdb
+c:\users\jacob\documents\visual studio 2010\Projects\TTT_ClassLibrary\TTT_ClassLibrary\obj\Debug\TTT_ClassLibrary.dll
+c:\users\jacob\documents\visual studio 2010\Projects\TTT_ClassLibrary\TTT_ClassLibrary\obj\Debug\TTT_ClassLibrary.pdb
+C:\Users\Jacob\Documents\Visual Studio 2010\Projects\TTT_ClassLibrary\TTT_ClassLibrary\obj\Debug\TTT_ClassLibrary.csprojResolveAssemblyReference.cache

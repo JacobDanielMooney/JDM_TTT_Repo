@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTT_ClassLibrary", "TTT_ClassLibrary\TTT_ClassLibrary.csproj", "{6DE4F955-7E8C-4DF4-9AED-A059E19EE337}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToeTests", "TicTacToeTests\TicTacToeTests.csproj", "{F87DB03D-55E3-47CC-9813-678905B3CF7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C3C19434-77DF-463A-A917-B299B5C0D51C}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+		TTT_ClassLibrary.vsmdi = TTT_ClassLibrary.vsmdi
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = TTT_ClassLibrary.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6DE4F955-7E8C-4DF4-9AED-A059E19EE337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DE4F955-7E8C-4DF4-9AED-A059E19EE337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DE4F955-7E8C-4DF4-9AED-A059E19EE337}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DE4F955-7E8C-4DF4-9AED-A059E19EE337}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F87DB03D-55E3-47CC-9813-678905B3CF7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F87DB03D-55E3-47CC-9813-678905B3CF7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F87DB03D-55E3-47CC-9813-678905B3CF7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F87DB03D-55E3-47CC-9813-678905B3CF7F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
