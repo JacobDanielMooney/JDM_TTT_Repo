@@ -46,23 +46,26 @@ namespace ConsoleApplication1
             }
 
             GameManager game = new GameManager(playerOne, playerTwo, 3);
-            while (game.checker.CheckForWin(game.board.boardArray) != true && game.checker.CheckForTie(game.board.boardArray) != true)
-            {
-                presenter.Send("The board currently looks like this:");
-                presenter.PrintBoard(game.board.boardArray);
-                Console.ReadLine();
+            bool gameIsPlaying = true;
+            presenter.Send("The board currently looks like this:");
+            presenter.PrintBoard(game.board.boardArray);
+            Console.ReadLine();
 
+            while (gameIsPlaying)
+            {
                 if (playerOne.GetType() == typeof(ComputerPlayer))
                 {
                     game.board.LogMove(AI.GetRandomMove(game.board.boardArray));
 
                     presenter.Send("After the computer's move, the board now looks like this:");
                     presenter.PrintBoard(game.board.boardArray);
+                    Console.ReadLine();
                 }
                 else
                 {
                     int xAxisChoice;
                     int yAxisChoice;
+                    presenter.Send("It is now Player One's turn (X's)");
                     presenter.Send("First enter the X axis of where you want to go:");
                     xAxisChoice = Convert.ToInt32(Console.ReadLine());
                     while (xAxisChoice > 2 || xAxisChoice < 0)
@@ -83,6 +86,13 @@ namespace ConsoleApplication1
 
                     presenter.Send("After player one's move, the board now looks like this:");
                     presenter.PrintBoard(game.board.boardArray);
+                    Console.ReadLine();
+                }
+
+                if (game.checker.CheckForWin(game.board.boardArray) == true || game.checker.CheckForTie(game.board.boardArray))
+                {
+                    gameIsPlaying = false;
+                    break;
                 }
 
                 if (playerTwo.GetType() == typeof(ComputerPlayer))
@@ -91,11 +101,13 @@ namespace ConsoleApplication1
 
                     presenter.Send("After the computer's move, the board now looks like this:");
                     presenter.PrintBoard(game.board.boardArray);
+                    Console.ReadLine();
                 }
                 else
                 {
                     int xAxisChoice;
                     int yAxisChoice;
+                    presenter.Send("It is now Player Two's turn (O's)");
                     presenter.Send("First Enter the X axis of where you want to go:");
                     xAxisChoice = Convert.ToInt32(Console.ReadLine());
                     while (xAxisChoice > 2 || xAxisChoice < 0)
@@ -114,10 +126,29 @@ namespace ConsoleApplication1
 
                     game.board.LogMove(playerTwo.MakeMove(xAxisChoice, yAxisChoice));
 
-                    presenter.Send("After player one's move, the board now looks like this:");
+                    presenter.Send("After player two's move, the board now looks like this:");
                     presenter.PrintBoard(game.board.boardArray);
+                    Console.ReadLine();
+                }
+
+                if (game.checker.CheckForWin(game.board.boardArray) == true || game.checker.CheckForTie(game.board.boardArray))
+                {
+                    gameIsPlaying = false;
+                    break;
                 }
             }
+
+            if (game.checker.CheckForWin(game.board.boardArray))
+            {
+                presenter.Send("Congratulations! One of you won!");
+            }
+
+            if (game.checker.CheckForTie(game.board.boardArray))
+            {
+                presenter.Send("There has been a tie");
+            }
+
+            Console.ReadLine();
         }
     }
 }
