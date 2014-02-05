@@ -49,11 +49,5 @@ namespace TTT_ClassLibrary
         {
             return new CreatedMove(xValue, yValue, identity);
         }
-
-        public override string AnnounceWinner()
-        {
-            string result = String.Format("{0} the Computer won!", name);
-            return result;
-        }
     }
 }

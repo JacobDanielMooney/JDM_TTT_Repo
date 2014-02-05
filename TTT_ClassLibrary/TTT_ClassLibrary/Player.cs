@@ -13,6 +13,18 @@ namespace TTT_ClassLibrary
 
         public abstract CreatedMove MakeMove(int xValue, int yValue);
 
-        public abstract string AnnounceWinner();
+        public override bool Equals(object obj)
+        {
+            Player comparePlayer = (Player)obj;
+            if (identity == comparePlayer.identity && this.GetType() == comparePlayer.GetType())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }

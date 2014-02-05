@@ -9,11 +9,12 @@ namespace TTT_ClassLibrary
     {
         public char[,] currentBoardState;
         public char enemyIdentity;
+        public char myIdentity;
 
-        public ComputerAI(char[,] board, char enemyID)
+        public ComputerAI(char enemyID, char myID)
         {
-            currentBoardState = board;
             enemyIdentity = enemyID;
+            myIdentity = myID;
         }
 
         public CreatedMove GetNextMove(char[,] boardState, int lastEnemyMoveX, int lastEnemyMoveY)
@@ -21,6 +22,25 @@ namespace TTT_ClassLibrary
             currentBoardState = boardState;
 
             return new CreatedMove(0, 0, 'O');
+        }
+
+        public CreatedMove GetRandomMove(char[,] boardState)
+        {
+            List<CreatedMove> remainingOpenSpaces = new List<CreatedMove>();
+            for (int yAxis = 0; yAxis < 3; yAxis++)
+            {
+                for (int xAxis = 0; xAxis < 3; xAxis++)
+                {
+                    if (boardState[yAxis, xAxis] == '\0')
+                    {
+                        remainingOpenSpaces.Add(new CreatedMove(xAxis, yAxis, myIdentity));
+                    }
+                }
+            }
+            Random rand = new Random();
+            int randomIndex = rand.Next(remainingOpenSpaces.Count);
+            CreatedMove randomMove = remainingOpenSpaces[randomIndex];
+            return randomMove;
         }
 
         public int WeighOpponentPresence(char[,] boardState, int enemyX, int enemyY)

@@ -50,11 +50,14 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoardCheckerTest.cs" />
     <Compile Include="BoardManagerTest.cs" />
     <Compile Include="ComputerAITest.cs" />
     <Compile Include="ComputerPlayerTest.cs" />
     <Compile Include="CreatedMoveTest.cs" />
+    <Compile Include="GameManagerTest.cs" />
     <Compile Include="HumanPlayerTest.cs" />
+    <Compile Include="PresentationManagerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -75,13 +75,5 @@ namespace TicTacToeTests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod()]
-        public void AnnounceHMNWinnerTest()
-        {
-            HumanPlayer target = new HumanPlayer("Marston");
-            string expected = "Marston the Human won!";
-            string actual = target.AnnounceWinner();
-            Assert.AreEqual(expected, actual);
-        }
     }
 }

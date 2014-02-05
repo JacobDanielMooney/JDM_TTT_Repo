@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="4a9dc256-f5d7-4fd5-86a2-8038c88c4ac6" name="Jacob@MANTA 2014-02-03 12:50:14" runUser="MANTA\Jacob" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="7c6903b5-04f0-4edb-852a-89e5b22e03f9">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment userDeploymentRoot="C:\Users\Jacob\Documents\Visual Studio 2010\Projects\TTT_ClassLibrary\TestResults" useDefaultDeploymentRoot="false" enabled="false" runDeploymentRoot="Jacob_MANTA 2014-02-03 12_50_14">
+      <DeploymentItem filename="C:\Users\Jacob\Documents\Visual Studio 2010\Projects\TTT_ClassLibrary\TTT_ClassLibrary\bin\Debug\TTT_ClassLibrary.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-02-03T12:50:14.5564964-06:00" queuing="2014-02-03T12:50:15.0418705-06:00" start="2014-02-03T12:50:15.1149315-06:00" finish="2014-02-03T12:50:20.4173565-06:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="1" executed="1" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="MANTA" outcome="Error" timestamp="2014-02-03T12:50:20.4163558-06:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="AddPlayerWontInputMoreThanTwoPlayers" storage="c:\users\jacob\documents\visual studio 2010\projects\ttt_classlibrary\tictactoetests\bin\debug\tictactoetests.dll" id="db7399d8-b7da-da9e-e818-08fb895767ed">
+      <Execution id="3d3048b0-c9c1-47e3-9ea7-bb59e2218c2f" />
+      <TestMethod codeBase="C:/Users/Jacob/Documents/Visual Studio 2010/Projects/TTT_ClassLibrary/TicTacToeTests/bin/Debug/TicTacToeTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TicTacToeTests.GameManagerTest, TicTacToeTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AddPlayerWontInputMoreThanTwoPlayers" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="db7399d8-b7da-da9e-e818-08fb895767ed" executionId="3d3048b0-c9c1-47e3-9ea7-bb59e2218c2f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="3d3048b0-c9c1-47e3-9ea7-bb59e2218c2f" testId="db7399d8-b7da-da9e-e818-08fb895767ed" testName="AddPlayerWontInputMoreThanTwoPlayers" computerName="MANTA" duration="00:00:05.2443938" startTime="2014-02-03T12:50:15.1729627-06:00" endTime="2014-02-03T12:50:20.4173565-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3d3048b0-c9c1-47e3-9ea7-bb59e2218c2f">
+    </UnitTestResult>
+  </Results>
+</TestRun>

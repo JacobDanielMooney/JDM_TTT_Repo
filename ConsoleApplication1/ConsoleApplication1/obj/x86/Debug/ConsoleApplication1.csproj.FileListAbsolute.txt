@@ -1,0 +1,7 @@
+c:\users\jacob\documents\visual studio 2010\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+c:\users\jacob\documents\visual studio 2010\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+c:\users\jacob\documents\visual studio 2010\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\TTT_ClassLibrary.dll
+c:\users\jacob\documents\visual studio 2010\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\TTT_ClassLibrary.pdb
+c:\users\jacob\documents\visual studio 2010\Projects\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+c:\users\jacob\documents\visual studio 2010\Projects\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
+c:\users\jacob\documents\visual studio 2010\Projects\ConsoleApplication1\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb

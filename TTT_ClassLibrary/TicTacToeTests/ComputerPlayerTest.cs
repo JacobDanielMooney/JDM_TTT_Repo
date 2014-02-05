@@ -52,14 +52,5 @@ namespace TicTacToeTests
         //}
         //
         #endregion
-
-        [TestMethod()]
-        public void AnnounceCPUWinnerTest()
-        {
-            ComputerPlayer target = new ComputerPlayer("Riley");
-            string expected = "Riley the Computer won!";
-            string actual = target.AnnounceWinner();
-            Assert.AreEqual(expected, actual);
-        }
     }
 }
