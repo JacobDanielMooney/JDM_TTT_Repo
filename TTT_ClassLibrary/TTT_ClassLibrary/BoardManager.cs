@@ -19,9 +19,17 @@ namespace TTT_ClassLibrary
             return boardArray;
         }
 
-        public void LogMove(CreatedMove move)
+        public CreatedMove LogMove(CreatedMove move)
         {
-            boardArray[move.yAxis, move.xAxis] = move.plyrIdentity;
+            if (boardArray[move.yAxis, move.xAxis] == '\0')
+            {
+                boardArray[move.yAxis, move.xAxis] = move.plyrIdentity;
+            }
+            else
+            {
+                return new CreatedMove(move.xAxis, move.yAxis, 'I');
+            }
+            return move;
         }
     }
 }

@@ -66,7 +66,7 @@ namespace ConsoleApplication1
                     int xAxisChoice;
                     int yAxisChoice;
                     presenter.Send("It is now Player One's turn (X's)");
-                    presenter.Send("First enter the X axis of where you want to go:");
+                    presenter.Send("First enter the X axis value of where you want to go:");
                     xAxisChoice = Convert.ToInt32(Console.ReadLine());
                     while (xAxisChoice > 2 || xAxisChoice < 0)
                     {
@@ -74,7 +74,7 @@ namespace ConsoleApplication1
                         xAxisChoice = Convert.ToInt32(Console.ReadLine());
                     }
 
-                    presenter.Send("Now enter the Y axis of where you want to go:");
+                    presenter.Send("Now enter the Y axis value of where you want to go:");
                     yAxisChoice = Convert.ToInt32(Console.ReadLine());
                     while (yAxisChoice > 2 || yAxisChoice < 0)
                     {
@@ -82,7 +82,27 @@ namespace ConsoleApplication1
                         yAxisChoice = Convert.ToInt32(Console.ReadLine());
                     }
 
-                    game.board.LogMove(playerOne.MakeMove(xAxisChoice, yAxisChoice));
+                    while (game.board.LogMove(playerOne.MakeMove(xAxisChoice, yAxisChoice)).plyrIdentity == 'I')
+                    {
+                        presenter.Send("That square has already been taken");
+                        presenter.Send("Please choose another X axis value");
+                        
+                        xAxisChoice = Convert.ToInt32(Console.ReadLine());
+                        while (xAxisChoice > 2 || xAxisChoice < 0)
+                        {
+                            presenter.Send("Only values between 0 and 2 (inclusive) are allowed");
+                            xAxisChoice = Convert.ToInt32(Console.ReadLine());
+                        }
+
+                        presenter.Send("Please enter a new Y axis value");
+
+                        yAxisChoice = Convert.ToInt32(Console.ReadLine());
+                        while (yAxisChoice > 2 || yAxisChoice < 0)
+                        {
+                            presenter.Send("Only values between 0 and 2 (inclusive) are allowed");
+                            yAxisChoice = Convert.ToInt32(Console.ReadLine());
+                        }
+                    }
 
                     presenter.Send("After player one's move, the board now looks like this:");
                     presenter.PrintBoard(game.board.boardArray);
@@ -124,7 +144,28 @@ namespace ConsoleApplication1
                         yAxisChoice = Convert.ToInt32(Console.ReadLine());
                     }
 
-                    game.board.LogMove(playerTwo.MakeMove(xAxisChoice, yAxisChoice));
+                    while (game.board.LogMove(playerTwo.MakeMove(xAxisChoice, yAxisChoice)).plyrIdentity == 'I')
+                    {
+                        presenter.Send("That square has already been taken");
+                        presenter.Send("Please choose another X axis value");
+
+                        xAxisChoice = Convert.ToInt32(Console.ReadLine());
+                        while (xAxisChoice > 2 || xAxisChoice < 0)
+                        {
+                            presenter.Send("Only values between 0 and 2 (inclusive) are allowed");
+                            xAxisChoice = Convert.ToInt32(Console.ReadLine());
+                        }
+
+                        presenter.Send("Please enter a new Y axis value");
+
+                        yAxisChoice = Convert.ToInt32(Console.ReadLine());
+                        while (yAxisChoice > 2 || yAxisChoice < 0)
+                        {
+                            presenter.Send("Only values between 0 and 2 (inclusive) are allowed");
+                            yAxisChoice = Convert.ToInt32(Console.ReadLine());
+                        }
+                    }
+
 
                     presenter.Send("After player two's move, the board now looks like this:");
                     presenter.PrintBoard(game.board.boardArray);
