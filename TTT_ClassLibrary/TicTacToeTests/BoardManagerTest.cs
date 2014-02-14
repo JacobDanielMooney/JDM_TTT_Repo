@@ -96,16 +96,28 @@ namespace TicTacToeTests
             Assert.AreEqual(expectedIdentity, actualIdentity);
         }
 
+        //[TestMethod()]
+        //public void LogMoveShouldReturnAnInvalidCreatedMoveIfMovesAreInvalid()
+        //{
+        //    BoardManager target = new BoardManager();
+        //    CreatedMove moveOne = new CreatedMove(1, 1, 'X');
+        //    CreatedMove moveTwo = new CreatedMove(1, 1, 'O');
+        //    target.LogMove(moveOne);
+        //    char actualIdentity = target.LogMove(moveTwo).plyrIdentity;
+        //    char expectedIdentity = 'I';
+        //    Assert.AreEqual(expectedIdentity, actualIdentity);
+        //}
+
         [TestMethod()]
-        public void LogMoveShouldReturnAnInvalidCreatedMoveIfMovesAreInvalid()
+        public void BoardManagerShouldBeAbleToCheckTheValidityOfAMove()
         {
             BoardManager target = new BoardManager();
             CreatedMove moveOne = new CreatedMove(1, 1, 'X');
             CreatedMove moveTwo = new CreatedMove(1, 1, 'O');
             target.LogMove(moveOne);
-            char actualIdentity = target.LogMove(moveTwo).plyrIdentity;
-            char expectedIdentity = 'I';
-            Assert.AreEqual(expectedIdentity, actualIdentity);
+            bool expected = false;
+            bool actual = target.IsMoveValid(moveTwo);
+            Assert.AreEqual(expected, actual);
         }
 
         

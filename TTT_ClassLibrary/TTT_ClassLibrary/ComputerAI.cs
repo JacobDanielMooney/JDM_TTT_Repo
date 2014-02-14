@@ -21,7 +21,7 @@ namespace TTT_ClassLibrary
         {
             currentBoardState = boardState;
 
-            return new CreatedMove(0, 0, 'O');
+            return new CreatedMove(0, 0, 'I');
         }
 
         public CreatedMove GetRandomMove(char[,] boardState)
@@ -57,6 +57,19 @@ namespace TTT_ClassLibrary
                 }
             }
             return 0;
+        }
+
+        public override bool Equals(object obj)
+        {
+            ComputerAI otherAI = (ComputerAI)obj;
+            if (this.currentBoardState == otherAI.currentBoardState && this.enemyIdentity == otherAI.enemyIdentity && this.myIdentity == otherAI.myIdentity)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

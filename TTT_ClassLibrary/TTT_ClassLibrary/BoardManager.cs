@@ -31,5 +31,17 @@ namespace TTT_ClassLibrary
             }
             return move;
         }
+
+        public bool IsMoveValid(CreatedMove move)
+        {
+            if (boardArray[move.yAxis, move.xAxis] == '\0')
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

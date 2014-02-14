@@ -4,10 +4,12 @@ using System;
 
 namespace TicTacToeTests
 {
-
+    
     [TestClass()]
     public class GameManagerTest
     {
+
+
         private TestContext testContextInstance;
 
         public TestContext TestContext
@@ -53,98 +55,25 @@ namespace TicTacToeTests
         #endregion
 
         [TestMethod()]
-        public void GameManagerEmptyConstructorTest()
+        public void GameManagerConstructorTest()
         {
             GameManager target = new GameManager();
         }
 
         [TestMethod()]
-        public void GameManagerFullConstructorTest()
-        {
-            GameManager target = new GameManager(new HumanPlayer('X'), new HumanPlayer('Y'), 3);
-        }
-
-        [TestMethod()]
-        public void ShouldBeAbleToAddPlayers()
+        public void GameManagerShouldBeAbleToMakeAGame()
         {
             GameManager target = new GameManager();
-            target.AddPlayer(new HumanPlayer('X'));
-
-            Player actual = target.xPlayer;
-            Player expected = new HumanPlayer('X');
-
-            Assert.AreEqual(expected, actual);
+            Game actual = target.MakeGame();
+            Game expected = new Game();
+            AreTwoGamesEqual(actual, expected);
         }
 
-        [TestMethod()]
-        public void AddPlayerShouldNotOverwritePlayers()
+        public void AreTwoGamesEqual(Game actual, Game expected)
         {
-            GameManager target = new GameManager();
-            target.AddPlayer(new HumanPlayer('X'));
-            target.AddPlayer(new HumanPlayer('O'));
-
-            Player actual = target.xPlayer;
-            Player expected = new HumanPlayer('X');
-
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void AddPlayerWontInputMoreThanTwoPlayers()
-        {
-            GameManager target = new GameManager();
-            target.AddPlayer(new HumanPlayer('X'));
-            target.AddPlayer(new HumanPlayer('O'));
-            target.AddPlayer(new ComputerPlayer('X'));
-
-            Player notExpected = new ComputerPlayer('X');
-            Assert.AreNotEqual(notExpected, target.xPlayer);
-            Assert.AreNotEqual(notExpected, target.oPlayer);
-        }
-
-        [TestMethod()]
-        public void RewritePlayerWillRewritePlayers()
-        {
-            GameManager target = new GameManager();
-            target.AddPlayer(new HumanPlayer('X'));
-            target.AddPlayer(new HumanPlayer('O'));
-            target.RewritePlayer(new ComputerPlayer('X'));
-
-            Player expected = new ComputerPlayer('X');
-
-            Assert.AreEqual(expected, target.xPlayer);
-
-            target.RewritePlayer(new ComputerPlayer('O'));
-            expected = new ComputerPlayer('O');
-
-            Assert.AreEqual(expected, target.oPlayer);
-        }
-
-        [TestMethod()]
-        public void ShouldNotBeAbleToMakeTwoPlayersWithIdenticalIdentities()
-        {
-            GameManager target = new GameManager();
-            target.AddPlayer(new HumanPlayer('X'));
-            target.AddPlayer(new HumanPlayer('X'));
-
-            Assert.AreEqual(null, target.oPlayer);
-
-            target = new GameManager(new HumanPlayer('X'), new HumanPlayer('O'), 3);
-            target.RewritePlayer(new ComputerPlayer('O'));
-            Assert.AreEqual(new HumanPlayer('X'), target.xPlayer);
-
-            target = new GameManager(new HumanPlayer('X'), new HumanPlayer('O'), 3);
-            target.RewritePlayer(new ComputerPlayer('X'));
-            Assert.AreEqual(new HumanPlayer('O'), target.oPlayer);
-        }
-
-        [TestMethod()]
-        public void ResetGameShouldBlankAllValues()
-        {
-            GameManager target = new GameManager(new HumanPlayer('X'), new HumanPlayer('O'), 3);
-            target.ResetGame(3);
-            Assert.AreEqual(null, target.xPlayer);
-            Assert.AreEqual(null, target.oPlayer);
+            Assert.AreEqual(actual.xPlayer, actual.xPlayer);
+            Assert.AreEqual(expected.oPlayer, expected.oPlayer);
+            CollectionAssert.AreEqual(actual.board.boardArray, expected.board.boardArray);
         }
     }
 }
