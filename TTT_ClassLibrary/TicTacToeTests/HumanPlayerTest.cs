@@ -67,11 +67,12 @@ namespace TicTacToeTests
         }
 
         [TestMethod()]
-        public void MakeMoveShouldMakeACreatedMove()
+        public void MakeMoveShouldReturnNull()
         {
+            BoardManager board = new BoardManager();
             HumanPlayer playerOne = new HumanPlayer();
-            CreatedMove actual = playerOne.MakeMove(2, 1);
-            CreatedMove expected = new CreatedMove(2, 1, 'X');
+            CreatedMove actual = playerOne.MakeMove(board.boardArray);
+            CreatedMove expected = null;
             Assert.AreEqual(expected, actual);
         }
 

@@ -67,15 +67,15 @@ namespace TicTacToeTests
             PresentationManager target = new PresentationManager();
             HumanPlayer playerOne = new HumanPlayer('X');
             HumanPlayer playerTwo = new HumanPlayer('O');
-            Game game = new Game(playerOne, playerTwo, new BoardChecker(), new BoardManager(), 3);
+            Game game = new Game(playerOne, playerTwo, new BoardManager(), 3);
             target.PrintBoard(game.board.boardArray);
-            game.board.LogMove(game.xPlayer.MakeMove(1, 1));
+            game.board.LogMove(new CreatedMove(1, 1, 'X'));
             target.PrintBoard(game.board.boardArray);
-            game.board.LogMove(game.oPlayer.MakeMove(0, 0));
+            game.board.LogMove(new CreatedMove(0, 0, 'O'));
             target.PrintBoard(game.board.boardArray);
-            game.board.LogMove(game.xPlayer.MakeMove(2, 0));
+            game.board.LogMove(new CreatedMove(2, 0, 'X'));
             target.PrintBoard(game.board.boardArray);
-            game.board.LogMove(game.oPlayer.MakeMove(0, 2));
+            game.board.LogMove(new CreatedMove(0, 2, 'O'));
             target.PrintBoard(game.board.boardArray);
         }
         

@@ -10,13 +10,6 @@ namespace TTT_ClassLibrary
         public HumanPlayer()
         {
             identity = 'X';
-            name = "hmnPlayer";
-        }
-
-        public HumanPlayer(string plyrName)
-        {
-            name = plyrName;
-            identity = 'X';
         }
 
         public HumanPlayer(char playerIdentity)
@@ -29,25 +22,11 @@ namespace TTT_ClassLibrary
             {
                 identity = 'X';
             }
-            name = "hmnPlayer";
         }
 
-        public HumanPlayer(char playerIdentity, string plyrName)
+        public override CreatedMove MakeMove(char[,] boardState)
         {
-            if (playerIdentity.ToString().ToUpper() == "O")
-            {
-                identity = 'O';
-            }
-            else
-            {
-                identity = 'X';
-            }
-            name = plyrName;
-        }
-
-        public override CreatedMove MakeMove(int xValue, int yValue)
-        {
-            return new CreatedMove(xValue, yValue, identity);
+            return null;
         }
     }
 }

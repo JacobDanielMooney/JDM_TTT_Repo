@@ -10,13 +10,6 @@ namespace TTT_ClassLibrary
         public ComputerPlayer()
         {
             identity = 'X';
-            name = "cpuPlayer";
-        }
-
-        public ComputerPlayer(string plyrName)
-        {
-            identity = 'X';
-            name = plyrName;
         }
 
         public ComputerPlayer(char playerIdentity)
@@ -29,25 +22,25 @@ namespace TTT_ClassLibrary
             {
                 identity = 'X';
             }
-            name = "cpuPlayer";
         }
 
-        public ComputerPlayer(char playerIdentity, string plyrName)
+        public override CreatedMove MakeMove(char[,] boardState)
         {
-            if (playerIdentity.ToString().ToUpper() == "O")
+            List<CreatedMove> remainingOpenSpaces = new List<CreatedMove>();
+            for (int yAxis = 0; yAxis < 3; yAxis++)
             {
-                identity = 'O';
+                for (int xAxis = 0; xAxis < 3; xAxis++)
+                {
+                    if (boardState[yAxis, xAxis] == '\0')
+                    {
+                        remainingOpenSpaces.Add(new CreatedMove(xAxis, yAxis, identity));
+                    }
+                }
             }
-            else
-            {
-                identity = 'X';
-            }
-            name = plyrName;
-        }
-
-        public override CreatedMove MakeMove(int xValue, int yValue)
-        {
-            return new CreatedMove(xValue, yValue, identity);
+            Random rand = new Random();
+            int randomIndex = rand.Next(remainingOpenSpaces.Count);
+            CreatedMove randomMove = remainingOpenSpaces[randomIndex];
+            return randomMove;
         }
     }
 }

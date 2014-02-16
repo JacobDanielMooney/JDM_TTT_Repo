@@ -96,17 +96,17 @@ namespace TicTacToeTests
             Assert.AreEqual(expectedIdentity, actualIdentity);
         }
 
-        //[TestMethod()]
-        //public void LogMoveShouldReturnAnInvalidCreatedMoveIfMovesAreInvalid()
-        //{
-        //    BoardManager target = new BoardManager();
-        //    CreatedMove moveOne = new CreatedMove(1, 1, 'X');
-        //    CreatedMove moveTwo = new CreatedMove(1, 1, 'O');
-        //    target.LogMove(moveOne);
-        //    char actualIdentity = target.LogMove(moveTwo).plyrIdentity;
-        //    char expectedIdentity = 'I';
-        //    Assert.AreEqual(expectedIdentity, actualIdentity);
-        //}
+        [TestMethod()]
+        public void LogMoveShouldReturnAnInvalidCreatedMoveIfMovesAreInvalid()
+        {
+            BoardManager target = new BoardManager();
+            CreatedMove moveOne = new CreatedMove(1, 1, 'X');
+            CreatedMove moveTwo = new CreatedMove(1, 1, 'O');
+            target.LogMove(moveOne);
+            char actualIdentity = target.LogMove(moveTwo).plyrIdentity;
+            char expectedIdentity = 'I';
+            Assert.AreEqual(expectedIdentity, actualIdentity);
+        }
 
         [TestMethod()]
         public void BoardManagerShouldBeAbleToCheckTheValidityOfAMove()
@@ -118,6 +118,146 @@ namespace TicTacToeTests
             bool expected = false;
             bool actual = target.IsMoveValid(moveTwo);
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void CheckForWinShouldReturnTrueIfThereAreThreeXsInARow()
+        {
+            //Three Across the Top
+            BoardManager board = new BoardManager();
+            board.LogMove(new CreatedMove(0, 0, 'X'));
+            board.LogMove(new CreatedMove(1, 0, 'X'));
+            board.LogMove(new CreatedMove(2, 0, 'X'));
+            Assert.AreEqual(true, board.CheckForWin());
+
+            //Three Across the Middle
+            board = new BoardManager();
+            board.LogMove(new CreatedMove(0, 1, 'X'));
+            board.LogMove(new CreatedMove(1, 1, 'X'));
+            board.LogMove(new CreatedMove(2, 1, 'X'));
+            Assert.AreEqual(true, board.CheckForWin());
+
+            //Three Across the Bottom
+            board = new BoardManager();
+            board.LogMove(new CreatedMove(0, 2, 'X'));
+            board.LogMove(new CreatedMove(1, 2, 'X'));
+            board.LogMove(new CreatedMove(2, 2, 'X'));
+            Assert.AreEqual(true, board.CheckForWin());
+
+            //Three Down the Left Side
+            board = new BoardManager();
+            board.LogMove(new CreatedMove(0, 0, 'X'));
+            board.LogMove(new CreatedMove(0, 1, 'X'));
+            board.LogMove(new CreatedMove(0, 2, 'X'));
+            Assert.AreEqual(true, board.CheckForWin());
+
+            //Three Down the Middle
+            board = new BoardManager();
+            board.LogMove(new CreatedMove(1, 0, 'X'));
+            board.LogMove(new CreatedMove(1, 1, 'X'));
+            board.LogMove(new CreatedMove(1, 2, 'X'));
+            Assert.AreEqual(true, board.CheckForWin());
+
+            //Three Down the Right Side
+            board = new BoardManager();
+            board.LogMove(new CreatedMove(2, 0, 'X'));
+            board.LogMove(new CreatedMove(2, 1, 'X'));
+            board.LogMove(new CreatedMove(2, 2, 'X'));
+            Assert.AreEqual(true, board.CheckForWin());
+
+            //Three In A Slash
+            board = new BoardManager();
+            board.LogMove(new CreatedMove(2, 0, 'X'));
+            board.LogMove(new CreatedMove(1, 1, 'X'));
+            board.LogMove(new CreatedMove(0, 2, 'X'));
+            Assert.AreEqual(true, board.CheckForWin());
+
+            //Three In A Backslash
+            board = new BoardManager();
+            board.LogMove(new CreatedMove(0, 0, 'X'));
+            board.LogMove(new CreatedMove(1, 1, 'X'));
+            board.LogMove(new CreatedMove(2, 2, 'X'));
+            Assert.AreEqual(true, board.CheckForWin());
+        }
+
+        [TestMethod()]
+        public void CheckForWinShouldReturnTrueIfThereAreThreeOsInARow()
+        {
+            //Three Across the Top
+            BoardManager board = new BoardManager();
+            board.LogMove(new CreatedMove(0, 0, 'O'));
+            board.LogMove(new CreatedMove(1, 0, 'O'));
+            board.LogMove(new CreatedMove(2, 0, 'O'));
+            Assert.AreEqual(true, board.CheckForWin());
+
+            //Three Across the Middle
+            board = new BoardManager();
+            board.LogMove(new CreatedMove(0, 1, 'O'));
+            board.LogMove(new CreatedMove(1, 1, 'O'));
+            board.LogMove(new CreatedMove(2, 1, 'O'));
+            Assert.AreEqual(true, board.CheckForWin());
+
+            //Three Across the Bottom
+            board = new BoardManager();
+            board.LogMove(new CreatedMove(0, 2, 'O'));
+            board.LogMove(new CreatedMove(1, 2, 'O'));
+            board.LogMove(new CreatedMove(2, 2, 'O'));
+            Assert.AreEqual(true, board.CheckForWin());
+
+            //Three Down the Left Side
+            board = new BoardManager();
+            board.LogMove(new CreatedMove(0, 0, 'O'));
+            board.LogMove(new CreatedMove(0, 1, 'O'));
+            board.LogMove(new CreatedMove(0, 2, 'O'));
+            Assert.AreEqual(true, board.CheckForWin());
+
+            //Three Down the Middle
+            board = new BoardManager();
+            board.LogMove(new CreatedMove(1, 0, 'O'));
+            board.LogMove(new CreatedMove(1, 1, 'O'));
+            board.LogMove(new CreatedMove(1, 2, 'O'));
+            Assert.AreEqual(true, board.CheckForWin());
+
+            //Three Down the Right Side
+            board = new BoardManager();
+            board.LogMove(new CreatedMove(2, 0, 'O'));
+            board.LogMove(new CreatedMove(2, 1, 'O'));
+            board.LogMove(new CreatedMove(2, 2, 'O'));
+            Assert.AreEqual(true, board.CheckForWin());
+
+            //Three In A Slash
+            board = new BoardManager();
+            board.LogMove(new CreatedMove(2, 0, 'O'));
+            board.LogMove(new CreatedMove(1, 1, 'O'));
+            board.LogMove(new CreatedMove(0, 2, 'O'));
+            Assert.AreEqual(true, board.CheckForWin());
+
+            //Three In A Backslash
+            board = new BoardManager();
+            board.LogMove(new CreatedMove(0, 0, 'O'));
+            board.LogMove(new CreatedMove(1, 1, 'O'));
+            board.LogMove(new CreatedMove(2, 2, 'O'));
+            Assert.AreEqual(true, board.CheckForWin());
+        }
+
+        [TestMethod()]
+        public void BoardManagerShouldKnowIfThereIsATie()
+        {
+            BoardManager board = new BoardManager();
+            HumanPlayer playerOne = new HumanPlayer('X');
+            ComputerPlayer playerTwo = new ComputerPlayer('O');
+
+            board.LogMove(new CreatedMove(1, 1, 'X'));
+            board.LogMove(new CreatedMove(0, 0, 'O'));
+            board.LogMove(new CreatedMove(0, 1, 'X'));
+            board.LogMove(new CreatedMove(2, 1, 'O'));
+            board.LogMove(new CreatedMove(0, 2, 'X'));
+            board.LogMove(new CreatedMove(2, 0, 'O'));
+            board.LogMove(new CreatedMove(1, 0, 'X'));
+            board.LogMove(new CreatedMove(1, 2, 'O'));
+            board.LogMove(new CreatedMove(2, 2, 'X'));
+
+            Assert.AreEqual(true, board.CheckForTie(board.boardArray));
         }
 
         

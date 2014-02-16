@@ -9,14 +9,13 @@ namespace TTT_ClassLibrary
     {
         public char identity;
 
-        public string name;
-
-        public abstract CreatedMove MakeMove(int xValue, int yValue);
+        public abstract CreatedMove MakeMove(char[,] boardState);
 
         public override bool Equals(object obj)
         {
-            Player comparePlayer = (Player)obj;
-            if (identity == comparePlayer.identity && this.GetType() == comparePlayer.GetType())
+            Player otherPlayer = (Player)obj;
+
+            if (this.identity == otherPlayer.identity && this.GetType() == otherPlayer.GetType())
             {
                 return true;
             }
@@ -25,6 +24,5 @@ namespace TTT_ClassLibrary
                 return false;
             }
         }
-
     }
 }

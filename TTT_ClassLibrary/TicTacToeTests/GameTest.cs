@@ -61,7 +61,7 @@ namespace TicTacToeTests
         [TestMethod()]
         public void GameManagerFullConstructorTest()
         {
-            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('Y'), new BoardChecker(), new BoardManager(), 3);
+            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('Y'), new BoardManager(), 3);
         }
 
         [TestMethod()]
@@ -129,75 +129,42 @@ namespace TicTacToeTests
 
             Assert.AreEqual(null, target.oPlayer);
 
-            target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardChecker(), new BoardManager(), 3);
+            target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager(), 3);
             target.RewritePlayer(new ComputerPlayer('O'));
             Assert.AreEqual(new HumanPlayer('X'), target.xPlayer);
 
-            target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardChecker(), new BoardManager(), 3);
+            target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager(), 3);
             target.RewritePlayer(new ComputerPlayer('X'));
             Assert.AreEqual(new HumanPlayer('O'), target.oPlayer);
 
-            target = new Game(new HumanPlayer('X'), new HumanPlayer('Y'), new BoardChecker(), new BoardManager(), 3);
+            target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager(), 3);
             Assert.AreEqual(new HumanPlayer('O'), target.oPlayer);
         }
 
         [TestMethod()]
         public void ResetGameShouldBlankAllValues()
         {
-            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardChecker(), new BoardManager(), 3);
+            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager(), 3);
             target.ResetGame(3);
             Assert.AreEqual(null, target.xPlayer);
             Assert.AreEqual(null, target.oPlayer);
         }
 
         [TestMethod()]
-        public void GameShouldBeAbleToMakeMovesOnBehalfOfItsPlayers()
-        {
-            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardChecker(), new BoardManager(), 3);
-            target.LogMove(target.XPlayerMove(1, 1));
-            char actual = target.board.boardArray[1, 1];
-            char expected = 'X';
-            target.LogMove(target.OPlayerMove(2, 2));
-            actual = target.board.boardArray[2, 2];
-            expected = 'O';
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
         public void GameShouldBeAbleToLogMoves()
         {
-            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardChecker(), new BoardManager(), 3);
-            target.LogMove(target.XPlayerMove(1,1));
+            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager(), 3);
+            target.LogMove(new CreatedMove(1,1,'X'));
         }
 
         [TestMethod()]
         public void GameShouldBeAbleToCheckAMovesValidity()
         {
-            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardChecker(), new BoardManager(), 3);
-            target.LogMove(target.XPlayerMove(1,1));
-            bool actual = target.IsMoveValid(target.LogMove(target.OPlayerMove(1,1)));
+            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager(), 3);
+            target.LogMove(new CreatedMove(1, 1, 'X'));
+            bool actual = target.IsMoveValid(new CreatedMove(1, 1, 'O'));
             bool expected = false;
             Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod()]
-        public void GameShouldHaveTwoAIs()
-        {
-            Game target = new Game(new HumanPlayer(), new HumanPlayer(), new BoardChecker(), new BoardManager(), 3);
-            Assert.AreEqual(null, target.XAI);
-            Assert.AreEqual(null, target.OAI);
-
-            target = new Game(new HumanPlayer(), new ComputerPlayer(), new BoardChecker(), new BoardManager(), 3);
-            Assert.AreEqual(null, target.XAI);
-            Assert.AreEqual(new ComputerAI('X', 'O'), target.OAI);
-
-            target = new Game(new ComputerPlayer(), new HumanPlayer(), new BoardChecker(), new BoardManager(), 3);
-            Assert.AreEqual(null, target.OAI);
-            Assert.AreEqual(new ComputerAI('O', 'X'), target.XAI);
-
-            target = new Game(new ComputerPlayer(), new ComputerPlayer(), new BoardChecker(), new BoardManager(), 3);
-            Assert.AreEqual(new ComputerAI('O', 'X'), target.XAI);
-            Assert.AreEqual(new ComputerAI('X', 'O'), target.OAI);
         }
 
         [TestMethod()]
@@ -207,25 +174,10 @@ namespace TicTacToeTests
             char[,] actual = target.GetBoard();
             char[,] expected = new char[3, 3];
             CollectionAssert.AreEqual(expected, actual);
-            target.LogMove(target.XPlayerMove(1, 1));
+            target.LogMove(new CreatedMove(1, 1, 'X'));
             expected[1, 1] = 'X';
             CollectionAssert.AreEqual(expected, actual);
             
-        }
-
-        [TestMethod()]
-        public void GameShouldBeAbleToLogAIMoves()
-        {
-            Game target = new Game(new ComputerPlayer(), new ComputerPlayer());
-            CreatedMove XRandomMove = target.LogMove(target.XAIRandomMove());
-            char actual = target.GetBoard()[XRandomMove.yAxis, XRandomMove.xAxis];
-            char expected = 'X';
-            Assert.AreEqual(expected, actual);
-
-            CreatedMove ORandomMove = target.LogMove(target.OAIRandomMove());
-            actual = target.GetBoard()[ORandomMove.yAxis, ORandomMove.xAxis];
-            expected = 'O';
-            Assert.AreEqual(expected, actual);
         }
     }
 }

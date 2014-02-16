@@ -52,5 +52,18 @@ namespace TicTacToeTests
         //}
         //
         #endregion
+
+        [TestMethod()]
+        public void MakeMoveShouldGetRandomMoveOfMovesAvailable()
+        {
+            BoardManager board = new BoardManager();
+            ComputerPlayer playerTwo = new ComputerPlayer('O');
+            board.LogMove(new CreatedMove(1, 1, 'X'));
+            CreatedMove actual = playerTwo.MakeMove(board.boardArray);
+            CreatedMove notExpected = new CreatedMove(1, 1, 'O');
+            Assert.IsTrue(actual.xAxis >= 0 && actual.xAxis <= 2);
+            Assert.IsTrue(actual.yAxis >= 0 && actual.yAxis <= 2);
+            Assert.AreNotEqual(notExpected, actual);
+        }
     }
 }
