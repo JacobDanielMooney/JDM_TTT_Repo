@@ -31,7 +31,7 @@ namespace TTT_ClassLibrary
             board = new BoardManager();
         }
 
-        public Game(Player one, Player two, BoardManager ourManager, int boardSize)
+        public Game(Player one, Player two, BoardManager ourManager)
         {
             xPlayer = one;
             if (xPlayer.identity != 'X')
@@ -44,7 +44,6 @@ namespace TTT_ClassLibrary
                 oPlayer.identity = 'O';
             }
             board = ourManager;
-            board.CreateNewBoard(boardSize);
         }
 
         public void AddPlayer(Player playerToAdd)
@@ -71,11 +70,11 @@ namespace TTT_ClassLibrary
             }
         }
 
-        public void ResetGame(int newBoardSize)
+        public void ResetGame()
         {
-            board.CreateNewBoard(newBoardSize);
             xPlayer = null;
             oPlayer = null;
+            board.ResetBoard();
         }
 
         public char[,] GetBoard()
@@ -83,14 +82,26 @@ namespace TTT_ClassLibrary
             return board.boardArray;
         }
 
-        public CreatedMove LogMove(CreatedMove move)
+        public Tuple<int,int> NextMove()
         {
-            return board.LogMove(move);
+            if (board.movesMade % 2 == 0)
+            {
+                return xPlayer.MakeMove(board.boardArray);
+            }
+            else
+            {
+                return oPlayer.MakeMove(board.boardArray);
+            }
         }
 
-        public bool IsMoveValid(CreatedMove moveToCheck)
+        public Tuple<int,int> LogMove(Tuple<int, int> coordinates)
         {
-            return board.IsMoveValid(moveToCheck);
+            return board.LogMove(coordinates);
+        }
+
+        public bool IsMoveValid(Tuple<int,int> coordinates)
+        {
+            return board.IsMoveValid(coordinates);
         }
     }
 }

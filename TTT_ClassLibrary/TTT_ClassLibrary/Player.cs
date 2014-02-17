@@ -9,7 +9,7 @@ namespace TTT_ClassLibrary
     {
         public char identity;
 
-        public abstract CreatedMove MakeMove(char[,] boardState);
+        public abstract Tuple<int,int> MakeMove(char[,] boardState);
 
         public override bool Equals(object obj)
         {

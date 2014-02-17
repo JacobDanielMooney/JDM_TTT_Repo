@@ -8,33 +8,53 @@ namespace TTT_ClassLibrary
     public class BoardManager
     {
         public char[,] boardArray = new char[3,3];
+        public int movesMade = 0;
 
         public BoardManager()
         {
         }
 
-        public char[,] CreateNewBoard(int boardSize)
+        public BoardManager(int BoardSize)
         {
-            boardArray = new char[boardSize, boardSize];
-            return boardArray;
+            boardArray = new char[BoardSize, BoardSize];
         }
 
-        public CreatedMove LogMove(CreatedMove move)
+        public void ResetBoard()
         {
-            if (boardArray[move.yAxis, move.xAxis] == '\0')
+            int currentBoardSize = boardArray.GetLength(0);
+            boardArray = new char[currentBoardSize, currentBoardSize];
+        }
+
+        public void ForceMove(Tuple<int, int> coordinates, char identity)
+        {
+            boardArray[coordinates.Item2, coordinates.Item1] = identity;
+        }
+
+        public Tuple<int,int> LogMove(Tuple<int,int> coordinates)
+        {
+            if (boardArray[coordinates.Item2, coordinates.Item1] == '\0')
             {
-                boardArray[move.yAxis, move.xAxis] = move.plyrIdentity;
+                if (movesMade % 2 == 0)
+                {
+                    boardArray[coordinates.Item2, coordinates.Item1] = 'X';
+                    movesMade++;
+                }
+                else
+                {
+                    boardArray[coordinates.Item2, coordinates.Item1] = 'O';
+                    movesMade++;
+                }
             }
             else
             {
-                return new CreatedMove(move.xAxis, move.yAxis, 'I');
+                return null;
             }
-            return move;
+            return coordinates;
         }
 
-        public bool IsMoveValid(CreatedMove move)
+        public bool IsMoveValid(Tuple<int,int> coordinates)
         {
-            if (boardArray[move.yAxis, move.xAxis] == '\0')
+            if (boardArray[coordinates.Item2, coordinates.Item1] == '\0')
             {
                 return true;
             }

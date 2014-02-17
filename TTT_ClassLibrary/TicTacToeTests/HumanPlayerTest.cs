@@ -71,8 +71,8 @@ namespace TicTacToeTests
         {
             BoardManager board = new BoardManager();
             HumanPlayer playerOne = new HumanPlayer();
-            CreatedMove actual = playerOne.MakeMove(board.boardArray);
-            CreatedMove expected = null;
+            Tuple<int,int> actual = playerOne.MakeMove(board.boardArray);
+            Tuple<int,int> expected = null;
             Assert.AreEqual(expected, actual);
         }
 

@@ -58,8 +58,9 @@ namespace TicTacToeTests
         {
             BoardManager board = new BoardManager();
             ComputerPlayer playerTwo = new ComputerPlayer('O');
-            board.LogMove(new CreatedMove(1, 1, 'X'));
-            CreatedMove actual = playerTwo.MakeMove(board.boardArray);
+            board.LogMove(new Tuple<int,int>(1,1));
+            Tuple<int,int> playerChoice = playerTwo.MakeMove(board.boardArray);
+            CreatedMove actual = new CreatedMove(playerChoice.Item1, playerChoice.Item2,playerTwo.identity);
             CreatedMove notExpected = new CreatedMove(1, 1, 'O');
             Assert.IsTrue(actual.xAxis >= 0 && actual.xAxis <= 2);
             Assert.IsTrue(actual.yAxis >= 0 && actual.yAxis <= 2);

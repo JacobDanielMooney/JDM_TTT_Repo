@@ -24,22 +24,22 @@ namespace TTT_ClassLibrary
             }
         }
 
-        public override CreatedMove MakeMove(char[,] boardState)
+        public override Tuple<int,int> MakeMove(char[,] boardState)
         {
-            List<CreatedMove> remainingOpenSpaces = new List<CreatedMove>();
+            List<Tuple<int,int>> remainingOpenSpaces = new List<Tuple<int,int>>();
             for (int yAxis = 0; yAxis < 3; yAxis++)
             {
                 for (int xAxis = 0; xAxis < 3; xAxis++)
                 {
                     if (boardState[yAxis, xAxis] == '\0')
                     {
-                        remainingOpenSpaces.Add(new CreatedMove(xAxis, yAxis, identity));
+                        remainingOpenSpaces.Add(new Tuple<int, int>(xAxis, yAxis));
                     }
                 }
             }
             Random rand = new Random();
             int randomIndex = rand.Next(remainingOpenSpaces.Count);
-            CreatedMove randomMove = remainingOpenSpaces[randomIndex];
+            Tuple<int,int> randomMove = remainingOpenSpaces[randomIndex];
             return randomMove;
         }
     }

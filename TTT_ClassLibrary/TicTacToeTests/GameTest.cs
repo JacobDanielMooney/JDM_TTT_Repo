@@ -61,7 +61,7 @@ namespace TicTacToeTests
         [TestMethod()]
         public void GameManagerFullConstructorTest()
         {
-            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('Y'), new BoardManager(), 3);
+            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('Y'), new BoardManager());
         }
 
         [TestMethod()]
@@ -129,40 +129,59 @@ namespace TicTacToeTests
 
             Assert.AreEqual(null, target.oPlayer);
 
-            target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager(), 3);
+            target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager());
             target.RewritePlayer(new ComputerPlayer('O'));
             Assert.AreEqual(new HumanPlayer('X'), target.xPlayer);
 
-            target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager(), 3);
+            target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager());
             target.RewritePlayer(new ComputerPlayer('X'));
             Assert.AreEqual(new HumanPlayer('O'), target.oPlayer);
 
-            target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager(), 3);
+            target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager());
             Assert.AreEqual(new HumanPlayer('O'), target.oPlayer);
         }
 
         [TestMethod()]
         public void ResetGameShouldBlankAllValues()
         {
-            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager(), 3);
-            target.ResetGame(3);
+            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager());
+            target.LogMove(new Tuple<int,int>(1,1));
+            target.LogMove(new Tuple<int,int>(1,1));
+            target.ResetGame();
             Assert.AreEqual(null, target.xPlayer);
             Assert.AreEqual(null, target.oPlayer);
+            CollectionAssert.AreEqual(new char[3, 3], target.board.boardArray);
+        }
+
+        [TestMethod()]
+        public void NextMoveShouldCallMakeMoveOfAppropriatePlayer()
+        {
+            Game target = new Game(new HumanPlayer('X'), new ComputerPlayer('O'));
+            Tuple<int,int> actual = target.NextMove();
+            Tuple<int,int> expected = null;
+            Assert.AreEqual(expected, actual);
+            target.LogMove(new Tuple<int, int>(1, 1));
+            actual = target.NextMove();
+            Tuple<int, int> notExpected = null;
+            Assert.AreNotEqual(notExpected, actual);
         }
 
         [TestMethod()]
         public void GameShouldBeAbleToLogMoves()
         {
-            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager(), 3);
-            target.LogMove(new CreatedMove(1,1,'X'));
+            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager());
+            target.LogMove(new Tuple<int,int>(1,1));
+            char actual = target.board.boardArray[1, 1];
+            char expected = 'X';
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod()]
         public void GameShouldBeAbleToCheckAMovesValidity()
         {
-            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager(), 3);
-            target.LogMove(new CreatedMove(1, 1, 'X'));
-            bool actual = target.IsMoveValid(new CreatedMove(1, 1, 'O'));
+            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager());
+            target.LogMove(new Tuple<int, int>(1, 1));
+            bool actual = target.IsMoveValid(new Tuple<int,int>(1,1));
             bool expected = false;
             Assert.AreEqual(expected, actual);
         }
@@ -174,7 +193,7 @@ namespace TicTacToeTests
             char[,] actual = target.GetBoard();
             char[,] expected = new char[3, 3];
             CollectionAssert.AreEqual(expected, actual);
-            target.LogMove(new CreatedMove(1, 1, 'X'));
+            target.LogMove(new Tuple<int, int>(1, 1));
             expected[1, 1] = 'X';
             CollectionAssert.AreEqual(expected, actual);
             

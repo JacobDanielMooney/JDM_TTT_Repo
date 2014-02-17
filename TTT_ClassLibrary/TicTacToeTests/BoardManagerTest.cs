@@ -62,24 +62,38 @@ namespace TicTacToeTests
             BoardManager target = new BoardManager();
         }
 
+        [TestMethod()]
+        public void VariableBoardSizeConstructorTest()
+        {
+            BoardManager target = new BoardManager(3);
+            CollectionAssert.AreEqual(new char[3, 3], target.boardArray);
+
+
+            target = new BoardManager(5);
+            CollectionAssert.AreEqual(new char[5, 5], target.boardArray);
+        }
 
         [TestMethod()]
-        public void CreateNewBoardShouldCreateA3x3TTTBoard()
+        public void ResetBoardShouldBlankAllBoardValues()
         {
             BoardManager target = new BoardManager();
-            char[,] expected = new char[3, 3];
-            char[,] actual = target.CreateNewBoard(3);
-            CollectionAssert.AreEqual(expected, actual);
+            target.ResetBoard();
+
+            CollectionAssert.AreEqual(new char[3, 3], target.boardArray);
+
+            target = new BoardManager(5);
+            target.ResetBoard();
+
+            CollectionAssert.AreEqual(new char[5, 5], target.boardArray);
         }
 
         [TestMethod()]
         public void LogMoveShouldLogACreatedMove()
         {
             BoardManager target = new BoardManager();
-            CreatedMove move = new CreatedMove(2, 1, 'O');
-            target.LogMove(move);
-            char actual = target.boardArray[1, 2];
-            char expected = 'O';
+            target.LogMove(new Tuple<int, int>(1, 1));
+            char actual = target.boardArray[1, 1];
+            char expected = 'X';
             Assert.AreEqual(expected, actual);
         }
 
@@ -87,24 +101,12 @@ namespace TicTacToeTests
         public void LogMoveShouldNotOverwriteMoves()
         {
             BoardManager target = new BoardManager();
-            CreatedMove moveOne = new CreatedMove(1, 1, 'X');
-            CreatedMove moveTwo = new CreatedMove(1, 1, 'O');
-            target.LogMove(moveOne);
-            target.LogMove(moveTwo);
+            //CreatedMove moveOne = new CreatedMove(1, 1, 'X');
+            //CreatedMove moveTwo = new CreatedMove(1, 1, 'O');
+            target.LogMove(new Tuple<int, int>(1, 1));
+            target.LogMove(new Tuple<int, int>(1, 1));
             char expectedIdentity = 'X';
             char actualIdentity = target.boardArray[1, 1];
-            Assert.AreEqual(expectedIdentity, actualIdentity);
-        }
-
-        [TestMethod()]
-        public void LogMoveShouldReturnAnInvalidCreatedMoveIfMovesAreInvalid()
-        {
-            BoardManager target = new BoardManager();
-            CreatedMove moveOne = new CreatedMove(1, 1, 'X');
-            CreatedMove moveTwo = new CreatedMove(1, 1, 'O');
-            target.LogMove(moveOne);
-            char actualIdentity = target.LogMove(moveTwo).plyrIdentity;
-            char expectedIdentity = 'I';
             Assert.AreEqual(expectedIdentity, actualIdentity);
         }
 
@@ -112,12 +114,20 @@ namespace TicTacToeTests
         public void BoardManagerShouldBeAbleToCheckTheValidityOfAMove()
         {
             BoardManager target = new BoardManager();
-            CreatedMove moveOne = new CreatedMove(1, 1, 'X');
-            CreatedMove moveTwo = new CreatedMove(1, 1, 'O');
-            target.LogMove(moveOne);
+            //CreatedMove moveOne = new CreatedMove(1, 1, 'X');
+            //CreatedMove moveTwo = new CreatedMove(1, 1, 'O');
+            target.LogMove(new Tuple<int, int>(1, 1));
             bool expected = false;
-            bool actual = target.IsMoveValid(moveTwo);
+            bool actual = target.IsMoveValid(new Tuple<int, int>(1, 1));
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void BoardManagerShouldTrackNumberOfMoves()
+        {
+            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('O'));
+            target.LogMove(new Tuple<int, int>(1, 1));
+            Assert.AreEqual(1, target.board.movesMade);
         }
 
         [TestMethod()]
@@ -125,58 +135,82 @@ namespace TicTacToeTests
         {
             //Three Across the Top
             BoardManager board = new BoardManager();
-            board.LogMove(new CreatedMove(0, 0, 'X'));
-            board.LogMove(new CreatedMove(1, 0, 'X'));
-            board.LogMove(new CreatedMove(2, 0, 'X'));
+            //board.LogMove(new CreatedMove(0, 0, 'X'));
+            //board.LogMove(new CreatedMove(1, 0, 'X'));
+            //board.LogMove(new CreatedMove(2, 0, 'X'));
+            board.ForceMove(new Tuple<int, int>(0, 0), 'X');
+            board.ForceMove(new Tuple<int, int>(1, 0), 'X');
+            board.ForceMove(new Tuple<int, int>(2, 0), 'X');
             Assert.AreEqual(true, board.CheckForWin());
 
             //Three Across the Middle
             board = new BoardManager();
-            board.LogMove(new CreatedMove(0, 1, 'X'));
-            board.LogMove(new CreatedMove(1, 1, 'X'));
-            board.LogMove(new CreatedMove(2, 1, 'X'));
+            //board.LogMove(new CreatedMove(0, 1, 'X'));
+            //board.LogMove(new CreatedMove(1, 1, 'X'));
+            //board.LogMove(new CreatedMove(2, 1, 'X'));
+            board.ForceMove(new Tuple<int, int>(0, 1), 'X');
+            board.ForceMove(new Tuple<int, int>(1, 1), 'X');
+            board.ForceMove(new Tuple<int, int>(2, 1), 'X');
             Assert.AreEqual(true, board.CheckForWin());
 
             //Three Across the Bottom
             board = new BoardManager();
-            board.LogMove(new CreatedMove(0, 2, 'X'));
-            board.LogMove(new CreatedMove(1, 2, 'X'));
-            board.LogMove(new CreatedMove(2, 2, 'X'));
+            //board.LogMove(new CreatedMove(0, 2, 'X'));
+            //board.LogMove(new CreatedMove(1, 2, 'X'));
+            //board.LogMove(new CreatedMove(2, 2, 'X'));
+            board.ForceMove(new Tuple<int, int>(0, 2), 'X');
+            board.ForceMove(new Tuple<int, int>(1, 2), 'X');
+            board.ForceMove(new Tuple<int, int>(2, 2), 'X');
             Assert.AreEqual(true, board.CheckForWin());
 
             //Three Down the Left Side
             board = new BoardManager();
-            board.LogMove(new CreatedMove(0, 0, 'X'));
-            board.LogMove(new CreatedMove(0, 1, 'X'));
-            board.LogMove(new CreatedMove(0, 2, 'X'));
+            //board.LogMove(new CreatedMove(0, 0, 'X'));
+            //board.LogMove(new CreatedMove(0, 1, 'X'));
+            //board.LogMove(new CreatedMove(0, 2, 'X'));
+            board.ForceMove(new Tuple<int, int>(0, 0), 'X');
+            board.ForceMove(new Tuple<int, int>(0, 1), 'X');
+            board.ForceMove(new Tuple<int, int>(0, 2), 'X');
             Assert.AreEqual(true, board.CheckForWin());
 
             //Three Down the Middle
             board = new BoardManager();
-            board.LogMove(new CreatedMove(1, 0, 'X'));
-            board.LogMove(new CreatedMove(1, 1, 'X'));
-            board.LogMove(new CreatedMove(1, 2, 'X'));
+            //board.LogMove(new CreatedMove(1, 0, 'X'));
+            //board.LogMove(new CreatedMove(1, 1, 'X'));
+            //board.LogMove(new CreatedMove(1, 2, 'X'));
+            board.ForceMove(new Tuple<int, int>(1, 0), 'X');
+            board.ForceMove(new Tuple<int, int>(1, 1), 'X');
+            board.ForceMove(new Tuple<int, int>(1, 2), 'X');
             Assert.AreEqual(true, board.CheckForWin());
 
             //Three Down the Right Side
             board = new BoardManager();
-            board.LogMove(new CreatedMove(2, 0, 'X'));
-            board.LogMove(new CreatedMove(2, 1, 'X'));
-            board.LogMove(new CreatedMove(2, 2, 'X'));
+            //board.LogMove(new CreatedMove(2, 0, 'X'));
+            //board.LogMove(new CreatedMove(2, 1, 'X'));
+            //board.LogMove(new CreatedMove(2, 2, 'X'));
+            board.ForceMove(new Tuple<int, int>(2, 0), 'X');
+            board.ForceMove(new Tuple<int, int>(2, 1), 'X');
+            board.ForceMove(new Tuple<int, int>(2, 2), 'X');
             Assert.AreEqual(true, board.CheckForWin());
 
             //Three In A Slash
             board = new BoardManager();
-            board.LogMove(new CreatedMove(2, 0, 'X'));
-            board.LogMove(new CreatedMove(1, 1, 'X'));
-            board.LogMove(new CreatedMove(0, 2, 'X'));
+            //board.LogMove(new CreatedMove(2, 0, 'X'));
+            //board.LogMove(new CreatedMove(1, 1, 'X'));
+            //board.LogMove(new CreatedMove(0, 2, 'X'));
+            board.ForceMove(new Tuple<int, int>(2, 0), 'X');
+            board.ForceMove(new Tuple<int, int>(1, 1), 'X');
+            board.ForceMove(new Tuple<int, int>(0, 2), 'X');
             Assert.AreEqual(true, board.CheckForWin());
 
             //Three In A Backslash
             board = new BoardManager();
-            board.LogMove(new CreatedMove(0, 0, 'X'));
-            board.LogMove(new CreatedMove(1, 1, 'X'));
-            board.LogMove(new CreatedMove(2, 2, 'X'));
+            //board.LogMove(new CreatedMove(0, 0, 'X'));
+            //board.LogMove(new CreatedMove(1, 1, 'X'));
+            //board.LogMove(new CreatedMove(2, 2, 'X'));
+            board.ForceMove(new Tuple<int, int>(0, 0), 'X');
+            board.ForceMove(new Tuple<int, int>(1, 1), 'X');
+            board.ForceMove(new Tuple<int, int>(2, 2), 'X');
             Assert.AreEqual(true, board.CheckForWin());
         }
 
@@ -185,58 +219,82 @@ namespace TicTacToeTests
         {
             //Three Across the Top
             BoardManager board = new BoardManager();
-            board.LogMove(new CreatedMove(0, 0, 'O'));
-            board.LogMove(new CreatedMove(1, 0, 'O'));
-            board.LogMove(new CreatedMove(2, 0, 'O'));
+            //board.LogMove(new CreatedMove(0, 0, 'O'));
+            //board.LogMove(new CreatedMove(1, 0, 'O'));
+            //board.LogMove(new CreatedMove(2, 0, 'O'));
+            board.ForceMove(new Tuple<int, int>(0, 0), 'O');
+            board.ForceMove(new Tuple<int, int>(1, 0), 'O');
+            board.ForceMove(new Tuple<int, int>(2, 0), 'O');
             Assert.AreEqual(true, board.CheckForWin());
 
             //Three Across the Middle
             board = new BoardManager();
-            board.LogMove(new CreatedMove(0, 1, 'O'));
-            board.LogMove(new CreatedMove(1, 1, 'O'));
-            board.LogMove(new CreatedMove(2, 1, 'O'));
+            //board.LogMove(new CreatedMove(0, 1, 'O'));
+            //board.LogMove(new CreatedMove(1, 1, 'O'));
+            //board.LogMove(new CreatedMove(2, 1, 'O'));
+            board.ForceMove(new Tuple<int, int>(0, 1), 'O');
+            board.ForceMove(new Tuple<int, int>(1, 1), 'O');
+            board.ForceMove(new Tuple<int, int>(2, 1), 'O');
             Assert.AreEqual(true, board.CheckForWin());
 
             //Three Across the Bottom
             board = new BoardManager();
-            board.LogMove(new CreatedMove(0, 2, 'O'));
-            board.LogMove(new CreatedMove(1, 2, 'O'));
-            board.LogMove(new CreatedMove(2, 2, 'O'));
+            //board.LogMove(new CreatedMove(0, 2, 'O'));
+            //board.LogMove(new CreatedMove(1, 2, 'O'));
+            //board.LogMove(new CreatedMove(2, 2, 'O'));
+            board.ForceMove(new Tuple<int, int>(0, 2), 'O');
+            board.ForceMove(new Tuple<int, int>(1, 2), 'O');
+            board.ForceMove(new Tuple<int, int>(2, 2), 'O');
             Assert.AreEqual(true, board.CheckForWin());
 
             //Three Down the Left Side
             board = new BoardManager();
-            board.LogMove(new CreatedMove(0, 0, 'O'));
-            board.LogMove(new CreatedMove(0, 1, 'O'));
-            board.LogMove(new CreatedMove(0, 2, 'O'));
+            //board.LogMove(new CreatedMove(0, 0, 'O'));
+            //board.LogMove(new CreatedMove(0, 1, 'O'));
+            //board.LogMove(new CreatedMove(0, 2, 'O'));
+            board.ForceMove(new Tuple<int, int>(0, 0), 'O');
+            board.ForceMove(new Tuple<int, int>(0, 1), 'O');
+            board.ForceMove(new Tuple<int, int>(0, 2), 'O');
             Assert.AreEqual(true, board.CheckForWin());
 
             //Three Down the Middle
             board = new BoardManager();
-            board.LogMove(new CreatedMove(1, 0, 'O'));
-            board.LogMove(new CreatedMove(1, 1, 'O'));
-            board.LogMove(new CreatedMove(1, 2, 'O'));
+            //board.LogMove(new CreatedMove(1, 0, 'O'));
+            //board.LogMove(new CreatedMove(1, 1, 'O'));
+            //board.LogMove(new CreatedMove(1, 2, 'O'));
+            board.ForceMove(new Tuple<int, int>(1, 0), 'O');
+            board.ForceMove(new Tuple<int, int>(1, 1), 'O');
+            board.ForceMove(new Tuple<int, int>(1, 2), 'O');
             Assert.AreEqual(true, board.CheckForWin());
 
             //Three Down the Right Side
             board = new BoardManager();
-            board.LogMove(new CreatedMove(2, 0, 'O'));
-            board.LogMove(new CreatedMove(2, 1, 'O'));
-            board.LogMove(new CreatedMove(2, 2, 'O'));
+            //board.LogMove(new CreatedMove(2, 0, 'O'));
+            //board.LogMove(new CreatedMove(2, 1, 'O'));
+            //board.LogMove(new CreatedMove(2, 2, 'O'));
+            board.ForceMove(new Tuple<int, int>(2, 0), 'O');
+            board.ForceMove(new Tuple<int, int>(2, 1), 'O');
+            board.ForceMove(new Tuple<int, int>(2, 2), 'O');
             Assert.AreEqual(true, board.CheckForWin());
 
             //Three In A Slash
             board = new BoardManager();
-            board.LogMove(new CreatedMove(2, 0, 'O'));
-            board.LogMove(new CreatedMove(1, 1, 'O'));
-            board.LogMove(new CreatedMove(0, 2, 'O'));
+            //board.LogMove(new CreatedMove(2, 0, 'O'));
+            //board.LogMove(new CreatedMove(1, 1, 'O'));
+            //board.LogMove(new CreatedMove(0, 2, 'O'));
+            board.ForceMove(new Tuple<int, int>(2, 0), 'O');
+            board.ForceMove(new Tuple<int, int>(1, 1), 'O');
+            board.ForceMove(new Tuple<int, int>(0, 2), 'O');
             Assert.AreEqual(true, board.CheckForWin());
 
             //Three In A Backslash
             board = new BoardManager();
-            board.LogMove(new CreatedMove(0, 0, 'O'));
-            board.LogMove(new CreatedMove(1, 1, 'O'));
-            board.LogMove(new CreatedMove(2, 2, 'O'));
+            //board.LogMove(new CreatedMove(0, 0, 'O'));
+            //board.LogMove(new CreatedMove(1, 1, 'O'));
+            //board.LogMove(new CreatedMove(2, 2, 'O'));
+            board.ForceMove(new Tuple<int, int>(0, 0), 'O');
+            board.ForceMove(new Tuple<int, int>(1, 1), 'O');
+            board.ForceMove(new Tuple<int, int>(2, 2), 'O');
             Assert.AreEqual(true, board.CheckForWin());
         }
 
@@ -247,15 +305,25 @@ namespace TicTacToeTests
             HumanPlayer playerOne = new HumanPlayer('X');
             ComputerPlayer playerTwo = new ComputerPlayer('O');
 
-            board.LogMove(new CreatedMove(1, 1, 'X'));
-            board.LogMove(new CreatedMove(0, 0, 'O'));
-            board.LogMove(new CreatedMove(0, 1, 'X'));
-            board.LogMove(new CreatedMove(2, 1, 'O'));
-            board.LogMove(new CreatedMove(0, 2, 'X'));
-            board.LogMove(new CreatedMove(2, 0, 'O'));
-            board.LogMove(new CreatedMove(1, 0, 'X'));
-            board.LogMove(new CreatedMove(1, 2, 'O'));
-            board.LogMove(new CreatedMove(2, 2, 'X'));
+            //board.LogMove(new CreatedMove(1, 1, 'X'));
+            //board.LogMove(new CreatedMove(0, 0, 'O'));
+            //board.LogMove(new CreatedMove(0, 1, 'X'));
+            //board.LogMove(new CreatedMove(2, 1, 'O'));
+            //board.LogMove(new CreatedMove(0, 2, 'X'));
+            //board.LogMove(new CreatedMove(2, 0, 'O'));
+            //board.LogMove(new CreatedMove(1, 0, 'X'));
+            //board.LogMove(new CreatedMove(1, 2, 'O'));
+            //board.LogMove(new CreatedMove(2, 2, 'X'));
+
+            board.LogMove(new Tuple<int, int>(1, 1));
+            board.LogMove(new Tuple<int, int>(0, 0));
+            board.LogMove(new Tuple<int, int>(0, 1));
+            board.LogMove(new Tuple<int, int>(2, 1));
+            board.LogMove(new Tuple<int, int>(0, 2));
+            board.LogMove(new Tuple<int, int>(2, 0));
+            board.LogMove(new Tuple<int, int>(1, 0));
+            board.LogMove(new Tuple<int, int>(1, 2));
+            board.LogMove(new Tuple<int, int>(2, 2));
 
             Assert.AreEqual(true, board.CheckForTie(board.boardArray));
         }

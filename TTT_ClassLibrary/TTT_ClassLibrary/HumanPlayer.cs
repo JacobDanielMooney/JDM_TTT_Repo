@@ -24,7 +24,7 @@ namespace TTT_ClassLibrary
             }
         }
 
-        public override CreatedMove MakeMove(char[,] boardState)
+        public override Tuple<int,int> MakeMove(char[,] boardState)
         {
             return null;
         }

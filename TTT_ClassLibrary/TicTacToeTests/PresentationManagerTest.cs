@@ -55,10 +55,21 @@ namespace TicTacToeTests
         #endregion
 
         [TestMethod()]
-        public void PresentationManagerShouldBeAbleToPromptUsers()
+        public void PresentationManagerShouldBeAbleToAskAboutGameSettings()
         {
             PresentationManager target = new PresentationManager();
-            target.Send("Choose a mode:");
+            string actual = target.WelcomeAndAskForGameParams();
+            string expected = "computers";
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void PresentationManagerShouldBeAbleToAskForANextMove()
+        {
+            PresentationManager target = new PresentationManager();
+            Tuple<int, int> actual = target.AskForNextMove();
+            Tuple<int, int> expected = new Tuple<int, int>(0, 0);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod()]
@@ -67,15 +78,15 @@ namespace TicTacToeTests
             PresentationManager target = new PresentationManager();
             HumanPlayer playerOne = new HumanPlayer('X');
             HumanPlayer playerTwo = new HumanPlayer('O');
-            Game game = new Game(playerOne, playerTwo, new BoardManager(), 3);
+            Game game = new Game(playerOne, playerTwo, new BoardManager());
             target.PrintBoard(game.board.boardArray);
-            game.board.LogMove(new CreatedMove(1, 1, 'X'));
+            game.board.LogMove(new Tuple<int, int>(1, 1));
             target.PrintBoard(game.board.boardArray);
-            game.board.LogMove(new CreatedMove(0, 0, 'O'));
+            game.board.LogMove(new Tuple<int, int>(1, 1));
             target.PrintBoard(game.board.boardArray);
-            game.board.LogMove(new CreatedMove(2, 0, 'X'));
+            game.board.LogMove(new Tuple<int, int>(1, 1));
             target.PrintBoard(game.board.boardArray);
-            game.board.LogMove(new CreatedMove(0, 2, 'O'));
+            game.board.LogMove(new Tuple<int, int>(1, 1));
             target.PrintBoard(game.board.boardArray);
         }
         

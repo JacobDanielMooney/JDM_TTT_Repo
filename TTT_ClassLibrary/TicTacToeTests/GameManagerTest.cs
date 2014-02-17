@@ -69,6 +69,25 @@ namespace TicTacToeTests
             AreTwoGamesEqual(actual, expected);
         }
 
+        [TestMethod()]
+        public void ShouldBeAbleToTakeGameParamsFromPresenter()
+        {
+            GameManager target = new GameManager();
+            target.MakeGame(target.presenter.WelcomeAndAskForGameParams());
+            Game actual = target.game;
+            Game expected = new Game(new ComputerPlayer(), new ComputerPlayer());
+            AreTwoGamesEqual(actual, expected);
+
+            target.MakeGame("human");
+            actual = target.game;
+            expected = new Game(new HumanPlayer(), new HumanPlayer());
+            AreTwoGamesEqual(actual, expected);
+
+            target.MakeGame("computer");
+            actual = target.game;
+            expected = new Game(new HumanPlayer(), new ComputerPlayer());
+        }
+
         public void AreTwoGamesEqual(Game actual, Game expected)
         {
             Assert.AreEqual(actual.xPlayer, actual.xPlayer);
