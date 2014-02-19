@@ -64,10 +64,19 @@ namespace TicTacToeTests
         }
 
         [TestMethod()]
-        public void PresentationManagerShouldBeAbleToAskForANextMove()
+        public void ShouldBeAbleToAskForFirstOrSecond()
         {
             PresentationManager target = new PresentationManager();
-            Tuple<int, int> actual = target.AskForNextMove();
+            bool actual = target.HumanGoesFirst();
+            bool expected = true;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void PresentationManagerShouldBeAbleToAskForCoordinates()
+        {
+            PresentationManager target = new PresentationManager();
+            Tuple<int, int> actual = target.PromptCoordinates();
             Tuple<int, int> expected = new Tuple<int, int>(0, 0);
             Assert.AreEqual(expected, actual);
         }

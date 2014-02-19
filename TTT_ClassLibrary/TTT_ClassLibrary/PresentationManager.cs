@@ -42,7 +42,7 @@ namespace TTT_ClassLibrary
                 {
                     answer = answer.ToLower();
                 }
-                if (loopCounter >= 3)
+                if (loopCounter >= loopLimit)
                 {
                     answer = "computers";
                 }
@@ -50,10 +50,45 @@ namespace TTT_ClassLibrary
             return answer.ToLower();
         }
 
-        public Tuple<int, int> AskForNextMove()
+        public bool HumanGoesFirst()
+        {
+            Send("Would you like to go first, or second? (Enter either \"First\" or \"Second\")");
+            string answer = Console.ReadLine();
+            //if (answer == null)
+            //    answer = "";
+            answer = answer.ToLower();
+            int loopCounter = 0;
+            int loopLimit = 3;
+            while (answer != "first" && answer != "second")
+            {
+                loopCounter++;
+                Send("Please enter either \"First\" or \"Second\".");
+                answer = Console.ReadLine();
+                //if (answer == null)
+                //    answer = "";
+                answer = answer.ToLower();
+                if(loopCounter >= loopLimit)
+                {
+                    answer = "first";
+                }
+            }
+            if (answer == "first")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public Tuple<int, int> PromptCoordinates()
         {
             Send("Enter an X coordinate between 0 and " + boardBoundaries + " (inclusive).");
-            int xCoordinate = Convert.ToInt32(Console.ReadLine());
+            int xCoordinate;
+            string answer = Console.ReadLine();
+            if (int.TryParse(answer, out xCoordinate) == false)
+                xCoordinate = -100;
             int loopCounter = 0;
             int loopLimit = 3;
             while (xCoordinate > boardBoundaries || xCoordinate < 0)
@@ -61,14 +96,19 @@ namespace TTT_ClassLibrary
                 loopCounter++;
                 Send("That was not a valid X coordinate. Please try again.\n"+
                     "Valid coordinates are between 0 and " + boardBoundaries + " (inclusive).");
-                xCoordinate = Convert.ToInt32(Console.ReadLine());
-                if (loopCounter >= 3)
+                answer = Console.ReadLine();
+                if (int.TryParse(answer, out xCoordinate) == false)
+                    xCoordinate = -100;
+                if (loopCounter >= loopLimit)
                 {
                     xCoordinate = 0;
                 }
             }
             Send("Enter a Y coordinate between 0 and " + boardBoundaries + " (inclusive).");
-            int yCoordinate = Convert.ToInt32(Console.ReadLine());
+            answer = Console.ReadLine();
+            int yCoordinate;
+            if (int.TryParse(answer, out yCoordinate) == false)
+                yCoordinate = -100;
             loopCounter = 0;
             loopLimit = 3;
             while (yCoordinate > boardBoundaries || yCoordinate < 0)
@@ -76,8 +116,10 @@ namespace TTT_ClassLibrary
                 loopCounter++;
                 Send("That was not a valid Y coordinate. Please try again.\n" +
                     "Valid coordinates are between 0 and " + boardBoundaries + " (inclusive).");
-                yCoordinate = Convert.ToInt32(Console.ReadLine());
-                if (loopCounter >= 3)
+                answer = Console.ReadLine();
+                if (int.TryParse(answer, out yCoordinate) == false)
+                    yCoordinate = -100;
+                if (loopCounter >= loopLimit)
                 {
                     yCoordinate = 0;
                 }
@@ -102,6 +144,7 @@ namespace TTT_ClassLibrary
                 }
                 Console.WriteLine("");
             }
+            Console.ReadLine();
         }
     }
 }

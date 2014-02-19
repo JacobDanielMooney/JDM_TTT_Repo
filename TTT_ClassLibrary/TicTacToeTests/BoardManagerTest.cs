@@ -101,8 +101,6 @@ namespace TicTacToeTests
         public void LogMoveShouldNotOverwriteMoves()
         {
             BoardManager target = new BoardManager();
-            //CreatedMove moveOne = new CreatedMove(1, 1, 'X');
-            //CreatedMove moveTwo = new CreatedMove(1, 1, 'O');
             target.LogMove(new Tuple<int, int>(1, 1));
             target.LogMove(new Tuple<int, int>(1, 1));
             char expectedIdentity = 'X';
@@ -114,8 +112,6 @@ namespace TicTacToeTests
         public void BoardManagerShouldBeAbleToCheckTheValidityOfAMove()
         {
             BoardManager target = new BoardManager();
-            //CreatedMove moveOne = new CreatedMove(1, 1, 'X');
-            //CreatedMove moveTwo = new CreatedMove(1, 1, 'O');
             target.LogMove(new Tuple<int, int>(1, 1));
             bool expected = false;
             bool actual = target.IsMoveValid(new Tuple<int, int>(1, 1));
@@ -135,9 +131,6 @@ namespace TicTacToeTests
         {
             //Three Across the Top
             BoardManager board = new BoardManager();
-            //board.LogMove(new CreatedMove(0, 0, 'X'));
-            //board.LogMove(new CreatedMove(1, 0, 'X'));
-            //board.LogMove(new CreatedMove(2, 0, 'X'));
             board.ForceMove(new Tuple<int, int>(0, 0), 'X');
             board.ForceMove(new Tuple<int, int>(1, 0), 'X');
             board.ForceMove(new Tuple<int, int>(2, 0), 'X');
@@ -145,9 +138,6 @@ namespace TicTacToeTests
 
             //Three Across the Middle
             board = new BoardManager();
-            //board.LogMove(new CreatedMove(0, 1, 'X'));
-            //board.LogMove(new CreatedMove(1, 1, 'X'));
-            //board.LogMove(new CreatedMove(2, 1, 'X'));
             board.ForceMove(new Tuple<int, int>(0, 1), 'X');
             board.ForceMove(new Tuple<int, int>(1, 1), 'X');
             board.ForceMove(new Tuple<int, int>(2, 1), 'X');
@@ -155,9 +145,6 @@ namespace TicTacToeTests
 
             //Three Across the Bottom
             board = new BoardManager();
-            //board.LogMove(new CreatedMove(0, 2, 'X'));
-            //board.LogMove(new CreatedMove(1, 2, 'X'));
-            //board.LogMove(new CreatedMove(2, 2, 'X'));
             board.ForceMove(new Tuple<int, int>(0, 2), 'X');
             board.ForceMove(new Tuple<int, int>(1, 2), 'X');
             board.ForceMove(new Tuple<int, int>(2, 2), 'X');
@@ -165,9 +152,6 @@ namespace TicTacToeTests
 
             //Three Down the Left Side
             board = new BoardManager();
-            //board.LogMove(new CreatedMove(0, 0, 'X'));
-            //board.LogMove(new CreatedMove(0, 1, 'X'));
-            //board.LogMove(new CreatedMove(0, 2, 'X'));
             board.ForceMove(new Tuple<int, int>(0, 0), 'X');
             board.ForceMove(new Tuple<int, int>(0, 1), 'X');
             board.ForceMove(new Tuple<int, int>(0, 2), 'X');
@@ -175,9 +159,6 @@ namespace TicTacToeTests
 
             //Three Down the Middle
             board = new BoardManager();
-            //board.LogMove(new CreatedMove(1, 0, 'X'));
-            //board.LogMove(new CreatedMove(1, 1, 'X'));
-            //board.LogMove(new CreatedMove(1, 2, 'X'));
             board.ForceMove(new Tuple<int, int>(1, 0), 'X');
             board.ForceMove(new Tuple<int, int>(1, 1), 'X');
             board.ForceMove(new Tuple<int, int>(1, 2), 'X');
@@ -185,9 +166,6 @@ namespace TicTacToeTests
 
             //Three Down the Right Side
             board = new BoardManager();
-            //board.LogMove(new CreatedMove(2, 0, 'X'));
-            //board.LogMove(new CreatedMove(2, 1, 'X'));
-            //board.LogMove(new CreatedMove(2, 2, 'X'));
             board.ForceMove(new Tuple<int, int>(2, 0), 'X');
             board.ForceMove(new Tuple<int, int>(2, 1), 'X');
             board.ForceMove(new Tuple<int, int>(2, 2), 'X');
@@ -195,9 +173,6 @@ namespace TicTacToeTests
 
             //Three In A Slash
             board = new BoardManager();
-            //board.LogMove(new CreatedMove(2, 0, 'X'));
-            //board.LogMove(new CreatedMove(1, 1, 'X'));
-            //board.LogMove(new CreatedMove(0, 2, 'X'));
             board.ForceMove(new Tuple<int, int>(2, 0), 'X');
             board.ForceMove(new Tuple<int, int>(1, 1), 'X');
             board.ForceMove(new Tuple<int, int>(0, 2), 'X');
@@ -205,9 +180,6 @@ namespace TicTacToeTests
 
             //Three In A Backslash
             board = new BoardManager();
-            //board.LogMove(new CreatedMove(0, 0, 'X'));
-            //board.LogMove(new CreatedMove(1, 1, 'X'));
-            //board.LogMove(new CreatedMove(2, 2, 'X'));
             board.ForceMove(new Tuple<int, int>(0, 0), 'X');
             board.ForceMove(new Tuple<int, int>(1, 1), 'X');
             board.ForceMove(new Tuple<int, int>(2, 2), 'X');
@@ -219,9 +191,6 @@ namespace TicTacToeTests
         {
             //Three Across the Top
             BoardManager board = new BoardManager();
-            //board.LogMove(new CreatedMove(0, 0, 'O'));
-            //board.LogMove(new CreatedMove(1, 0, 'O'));
-            //board.LogMove(new CreatedMove(2, 0, 'O'));
             board.ForceMove(new Tuple<int, int>(0, 0), 'O');
             board.ForceMove(new Tuple<int, int>(1, 0), 'O');
             board.ForceMove(new Tuple<int, int>(2, 0), 'O');
@@ -229,9 +198,6 @@ namespace TicTacToeTests
 
             //Three Across the Middle
             board = new BoardManager();
-            //board.LogMove(new CreatedMove(0, 1, 'O'));
-            //board.LogMove(new CreatedMove(1, 1, 'O'));
-            //board.LogMove(new CreatedMove(2, 1, 'O'));
             board.ForceMove(new Tuple<int, int>(0, 1), 'O');
             board.ForceMove(new Tuple<int, int>(1, 1), 'O');
             board.ForceMove(new Tuple<int, int>(2, 1), 'O');
@@ -239,9 +205,6 @@ namespace TicTacToeTests
 
             //Three Across the Bottom
             board = new BoardManager();
-            //board.LogMove(new CreatedMove(0, 2, 'O'));
-            //board.LogMove(new CreatedMove(1, 2, 'O'));
-            //board.LogMove(new CreatedMove(2, 2, 'O'));
             board.ForceMove(new Tuple<int, int>(0, 2), 'O');
             board.ForceMove(new Tuple<int, int>(1, 2), 'O');
             board.ForceMove(new Tuple<int, int>(2, 2), 'O');
@@ -249,9 +212,6 @@ namespace TicTacToeTests
 
             //Three Down the Left Side
             board = new BoardManager();
-            //board.LogMove(new CreatedMove(0, 0, 'O'));
-            //board.LogMove(new CreatedMove(0, 1, 'O'));
-            //board.LogMove(new CreatedMove(0, 2, 'O'));
             board.ForceMove(new Tuple<int, int>(0, 0), 'O');
             board.ForceMove(new Tuple<int, int>(0, 1), 'O');
             board.ForceMove(new Tuple<int, int>(0, 2), 'O');
@@ -259,9 +219,6 @@ namespace TicTacToeTests
 
             //Three Down the Middle
             board = new BoardManager();
-            //board.LogMove(new CreatedMove(1, 0, 'O'));
-            //board.LogMove(new CreatedMove(1, 1, 'O'));
-            //board.LogMove(new CreatedMove(1, 2, 'O'));
             board.ForceMove(new Tuple<int, int>(1, 0), 'O');
             board.ForceMove(new Tuple<int, int>(1, 1), 'O');
             board.ForceMove(new Tuple<int, int>(1, 2), 'O');
@@ -269,9 +226,6 @@ namespace TicTacToeTests
 
             //Three Down the Right Side
             board = new BoardManager();
-            //board.LogMove(new CreatedMove(2, 0, 'O'));
-            //board.LogMove(new CreatedMove(2, 1, 'O'));
-            //board.LogMove(new CreatedMove(2, 2, 'O'));
             board.ForceMove(new Tuple<int, int>(2, 0), 'O');
             board.ForceMove(new Tuple<int, int>(2, 1), 'O');
             board.ForceMove(new Tuple<int, int>(2, 2), 'O');
@@ -279,9 +233,6 @@ namespace TicTacToeTests
 
             //Three In A Slash
             board = new BoardManager();
-            //board.LogMove(new CreatedMove(2, 0, 'O'));
-            //board.LogMove(new CreatedMove(1, 1, 'O'));
-            //board.LogMove(new CreatedMove(0, 2, 'O'));
             board.ForceMove(new Tuple<int, int>(2, 0), 'O');
             board.ForceMove(new Tuple<int, int>(1, 1), 'O');
             board.ForceMove(new Tuple<int, int>(0, 2), 'O');
@@ -289,9 +240,6 @@ namespace TicTacToeTests
 
             //Three In A Backslash
             board = new BoardManager();
-            //board.LogMove(new CreatedMove(0, 0, 'O'));
-            //board.LogMove(new CreatedMove(1, 1, 'O'));
-            //board.LogMove(new CreatedMove(2, 2, 'O'));
             board.ForceMove(new Tuple<int, int>(0, 0), 'O');
             board.ForceMove(new Tuple<int, int>(1, 1), 'O');
             board.ForceMove(new Tuple<int, int>(2, 2), 'O');
@@ -305,16 +253,6 @@ namespace TicTacToeTests
             HumanPlayer playerOne = new HumanPlayer('X');
             ComputerPlayer playerTwo = new ComputerPlayer('O');
 
-            //board.LogMove(new CreatedMove(1, 1, 'X'));
-            //board.LogMove(new CreatedMove(0, 0, 'O'));
-            //board.LogMove(new CreatedMove(0, 1, 'X'));
-            //board.LogMove(new CreatedMove(2, 1, 'O'));
-            //board.LogMove(new CreatedMove(0, 2, 'X'));
-            //board.LogMove(new CreatedMove(2, 0, 'O'));
-            //board.LogMove(new CreatedMove(1, 0, 'X'));
-            //board.LogMove(new CreatedMove(1, 2, 'O'));
-            //board.LogMove(new CreatedMove(2, 2, 'X'));
-
             board.LogMove(new Tuple<int, int>(1, 1));
             board.LogMove(new Tuple<int, int>(0, 0));
             board.LogMove(new Tuple<int, int>(0, 1));
@@ -325,7 +263,7 @@ namespace TicTacToeTests
             board.LogMove(new Tuple<int, int>(1, 2));
             board.LogMove(new Tuple<int, int>(2, 2));
 
-            Assert.AreEqual(true, board.CheckForTie(board.boardArray));
+            Assert.AreEqual(true, board.CheckForTie());
         }
 
         

@@ -64,7 +64,7 @@ namespace TTT_ClassLibrary
             }
         }
 
-        public bool CheckForTie(char[,] boardArray)
+        public bool CheckForTie()
         {
             if (CheckForWin() == true)
             {

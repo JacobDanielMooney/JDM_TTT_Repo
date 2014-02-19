@@ -58,6 +58,20 @@ namespace TTT_ClassLibrary
             }
         }
 
+        public Tuple<int,int> ForceMove()
+        {
+            if (board.movesMade % 2 == 0)
+            {
+                HumanPlayer inactivePlayer = (HumanPlayer)xPlayer;
+                return inactivePlayer.ForceMove(board.boardArray);
+            }
+            else
+            {
+                HumanPlayer inactivePlayer = (HumanPlayer)oPlayer;
+                return inactivePlayer.ForceMove(board.boardArray);
+            }
+        }
+
         public void RewritePlayer(Player playerToAdd)
         {
             if (playerToAdd.identity == 'X')
@@ -102,6 +116,16 @@ namespace TTT_ClassLibrary
         public bool IsMoveValid(Tuple<int,int> coordinates)
         {
             return board.IsMoveValid(coordinates);
+        }
+
+        public bool CheckForWin()
+        {
+            return board.CheckForWin();
+        }
+
+        public bool CheckForTie()
+        {
+            return board.CheckForTie();
         }
     }
 }

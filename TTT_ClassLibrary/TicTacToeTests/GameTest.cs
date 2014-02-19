@@ -177,6 +177,13 @@ namespace TicTacToeTests
         }
 
         [TestMethod()]
+        public void GameShouldBeAbleToForceMovesForInactivePlayers()
+        {
+            Game target = new Game(new HumanPlayer('X'), new HumanPlayer('O'));
+            target.ForceMove();
+        }
+
+        [TestMethod()]
         public void GameShouldBeAbleToCheckAMovesValidity()
         {
             Game target = new Game(new HumanPlayer('X'), new HumanPlayer('O'), new BoardManager());

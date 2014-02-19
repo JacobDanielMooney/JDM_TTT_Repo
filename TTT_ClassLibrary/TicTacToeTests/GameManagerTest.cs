@@ -70,10 +70,17 @@ namespace TicTacToeTests
         }
 
         [TestMethod()]
+        public void StartTest()
+        {
+            GameManager target = new GameManager();
+            target.StartGame();
+        }
+
+        [TestMethod()]
         public void ShouldBeAbleToTakeGameParamsFromPresenter()
         {
             GameManager target = new GameManager();
-            target.MakeGame(target.presenter.WelcomeAndAskForGameParams());
+            target.MakeGame("computers");
             Game actual = target.game;
             Game expected = new Game(new ComputerPlayer(), new ComputerPlayer());
             AreTwoGamesEqual(actual, expected);
@@ -88,10 +95,47 @@ namespace TicTacToeTests
             expected = new Game(new HumanPlayer(), new ComputerPlayer());
         }
 
+        [TestMethod()]
+        public void ShouldBeAbleToGetTupleOfNextMove()
+        {
+            GameManager target = new GameManager();
+            target.MakeGame("computer");
+            Tuple<int,int> actual = target.GetNextTuple();
+            Tuple<int, int> expected = new Tuple<int, int>(0, 0);
+            Assert.AreEqual(expected, actual);
+            target.LogMove(actual);
+            actual = target.GetNextTuple();
+            Assert.AreNotEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void ShouldBeAbleToLogAMove()
+        {
+            GameManager target = new GameManager();
+            target.MakeGame("computer");
+            Tuple<int, int> XatOneOne = new Tuple<int, int>(1, 1);
+            target.LogMove(XatOneOne);
+            char actual = target.game.board.boardArray[1, 1];
+            char expected = 'X';
+            Assert.AreEqual(expected, actual);
+            Tuple<int, int> OatZeroZero = new Tuple<int, int>(0, 0);
+            target.LogMove(OatZeroZero);
+            actual = target.game.board.boardArray[0, 0];
+            expected = 'O';
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void StartGameTest()
+        {
+            GameManager target = new GameManager();
+            target.StartGame();
+        }
+
         public void AreTwoGamesEqual(Game actual, Game expected)
         {
-            Assert.AreEqual(actual.xPlayer, actual.xPlayer);
-            Assert.AreEqual(expected.oPlayer, expected.oPlayer);
+            Assert.AreEqual(actual.xPlayer, expected.xPlayer);
+            Assert.AreEqual(actual.oPlayer, expected.oPlayer);
             CollectionAssert.AreEqual(actual.board.boardArray, expected.board.boardArray);
         }
     }
