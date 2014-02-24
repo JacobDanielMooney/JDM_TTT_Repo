@@ -72,6 +72,10 @@ namespace TTT_ClassLibrary
             }
             ReportGameEnd();
             Console.ReadLine();
+            if (presenter.PlayAgain())
+            {
+                StartGame();
+            }
         }
 
         public void ReportGameEnd()

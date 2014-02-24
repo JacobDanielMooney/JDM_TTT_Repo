@@ -82,6 +82,16 @@ namespace TicTacToeTests
         }
 
         [TestMethod()]
+        public void PresentationManagerShouldBeAbleToPromptForRestart()
+        {
+            PresentationManager target = new PresentationManager();
+            bool actual = target.PlayAgain();
+            bool expected = false;
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        [TestMethod()]
         public void PresentationManagerShouldBeAbleToPrintTheBoard()
         {
             PresentationManager target = new PresentationManager();

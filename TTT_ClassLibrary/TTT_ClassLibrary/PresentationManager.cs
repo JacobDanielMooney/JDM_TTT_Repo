@@ -26,25 +26,24 @@ namespace TTT_ClassLibrary
                 "Or Would you like to watch a match between computers?\n\n" +
                 "Enter either \"Human\", \"Computer\", or \"Computers\".");
             string answer = Console.ReadLine();
-            if (answer != null)
-            {
-                answer = answer.ToLower();
-            }
+            if (answer == null)
+                answer = "";
             int loopCounter = 0;
             int loopLimit = 3; 
-            while (answer != "human" && answer != "computer" && answer != "computers")
+            while (answer.ToLower() != "human" && answer.ToLower() != "computer" && answer.ToLower() != "computers")
             {
                 loopCounter++;
-                Send("That was not a valid option. Please try again.\n" +
-                    "Enter either \"Human\", \"Computer\", or \"Computers\".");
-                answer = Console.ReadLine();
-                if (answer != null)
-                {
-                    answer = answer.ToLower();
-                }
                 if (loopCounter >= loopLimit)
                 {
                     answer = "computers";
+                }
+                else
+                {
+                    Send("That was not a valid option. Please try again.\n" +
+                    "Enter either \"Human\", \"Computer\", or \"Computers\".");
+                    answer = Console.ReadLine();
+                    if (answer == null)
+                        answer = "";
                 }
             }
             return answer.ToLower();
@@ -56,23 +55,57 @@ namespace TTT_ClassLibrary
             string answer = Console.ReadLine();
             if (answer == null)
                 answer = "";
-            answer = answer.ToLower();
             int loopCounter = 0;
             int loopLimit = 3;
-            while (answer != "first" && answer != "second")
+            while (answer.ToLower() != "first" && answer.ToLower() != "second")
             {
                 loopCounter++;
-                Send("Please enter either \"First\" or \"Second\".");
-                answer = Console.ReadLine();
-                if (answer == null)
-                    answer = "";
-                answer = answer.ToLower();
-                if(loopCounter >= loopLimit)
+                if (loopCounter >= loopLimit)
                 {
                     answer = "first";
                 }
+                else
+                {
+                    Send("Please enter either \"First\" or \"Second.\"");
+                    answer = Console.ReadLine();
+                    if (answer == null)
+                        answer = "";
+                }
             }
             if (answer == "first")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool PlayAgain()
+        {
+            Send("Would you like to play again? (Type either \"Yes\" or \"No\")");
+            string answer = Console.ReadLine();
+            if (answer == null)
+                answer = "";
+            int loopCounter = 0;
+            int loopLimit = 2;
+            while (answer.ToLower() != "yes" && answer.ToLower() != "no")
+            {
+                loopCounter++;
+                if (loopCounter >= loopLimit)
+                {
+                    answer = "no";
+                }
+                else
+                {
+                    Send("Please enter either \"yes\" or \"no.\"");
+                    answer = Console.ReadLine();
+                    if (answer == null)
+                        answer = "";
+                }
+            }
+            if (answer.ToLower() == "yes")
             {
                 return true;
             }
