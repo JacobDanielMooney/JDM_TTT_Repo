@@ -118,7 +118,19 @@ namespace TTT_ClassLibrary
             return board.IsMoveValid(coordinates);
         }
 
-        public bool CheckForWin()
+        public char GetActivePlayerID()
+        {
+            if (board.movesMade % 2 == 0)
+            {
+                return 'X';
+            }
+            else
+            {
+                return 'O';
+            }
+        }
+
+        public char CheckForWin()
         {
             return board.CheckForWin();
         }

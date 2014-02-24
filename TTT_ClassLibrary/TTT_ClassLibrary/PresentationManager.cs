@@ -54,8 +54,8 @@ namespace TTT_ClassLibrary
         {
             Send("Would you like to go first, or second? (Enter either \"First\" or \"Second\")");
             string answer = Console.ReadLine();
-            //if (answer == null)
-            //    answer = "";
+            if (answer == null)
+                answer = "";
             answer = answer.ToLower();
             int loopCounter = 0;
             int loopLimit = 3;
@@ -64,8 +64,8 @@ namespace TTT_ClassLibrary
                 loopCounter++;
                 Send("Please enter either \"First\" or \"Second\".");
                 answer = Console.ReadLine();
-                //if (answer == null)
-                //    answer = "";
+                if (answer == null)
+                    answer = "";
                 answer = answer.ToLower();
                 if(loopCounter >= loopLimit)
                 {

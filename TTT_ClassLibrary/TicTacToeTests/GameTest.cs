@@ -203,7 +203,19 @@ namespace TicTacToeTests
             target.LogMove(new Tuple<int, int>(1, 1));
             expected[1, 1] = 'X';
             CollectionAssert.AreEqual(expected, actual);
-            
+        }
+
+        [TestMethod()]
+        public void GameShouldKnowWhoIsActivePlayer()
+        {
+            Game target = new Game(new HumanPlayer(), new ComputerPlayer());
+            char actual = target.GetActivePlayerID();
+            char expected = 'X';
+            Assert.AreEqual(expected, actual);
+            target.LogMove(new Tuple<int, int>(1, 1));
+            actual = target.GetActivePlayerID();
+            expected = 'O';
+            Assert.AreEqual(expected, actual);
         }
     }
 }

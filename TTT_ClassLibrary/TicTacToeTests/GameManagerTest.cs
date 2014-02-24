@@ -126,6 +126,39 @@ namespace TicTacToeTests
         }
 
         [TestMethod()]
+        public void GameManagerShouldBeAbleToReportOnWinsAndTies()
+        {
+            GameManager target = new GameManager();
+            target.MakeGame("human");
+            target.game.board.ForceMove(new Tuple<int, int>(0, 0), 'X');
+            target.game.board.ForceMove(new Tuple<int, int>(1, 0), 'X');
+            target.game.board.ForceMove(new Tuple<int, int>(2, 0), 'X');
+            target.ReportGameEnd();
+            
+            target = new GameManager();
+            target.MakeGame("human");
+            target.game.board.ForceMove(new Tuple<int, int>(0, 0), 'O');
+            target.game.board.ForceMove(new Tuple<int, int>(1, 0), 'O');
+            target.game.board.ForceMove(new Tuple<int, int>(2, 0), 'O');
+            target.ReportGameEnd();
+            
+            target = new GameManager();
+            target.MakeGame("human");
+            target.game.board.LogMove(new Tuple<int, int>(1, 1));
+            target.game.board.LogMove(new Tuple<int, int>(0, 0));
+            target.game.board.LogMove(new Tuple<int, int>(0, 1));
+            target.game.board.LogMove(new Tuple<int, int>(2, 1));
+            target.game.board.LogMove(new Tuple<int, int>(0, 2));
+            target.game.board.LogMove(new Tuple<int, int>(2, 0));
+            target.game.board.LogMove(new Tuple<int, int>(1, 0));
+            target.game.board.LogMove(new Tuple<int, int>(1, 2));
+            target.game.board.LogMove(new Tuple<int, int>(2, 2));
+            target.ReportGameEnd();
+
+
+        }
+
+        [TestMethod()]
         public void StartGameTest()
         {
             GameManager target = new GameManager();

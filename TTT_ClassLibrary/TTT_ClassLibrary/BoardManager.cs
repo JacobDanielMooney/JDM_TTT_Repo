@@ -66,7 +66,7 @@ namespace TTT_ClassLibrary
 
         public bool CheckForTie()
         {
-            if (CheckForWin() == true)
+            if (CheckForWin() != '\0')
             {
                 return false;
             }
@@ -82,29 +82,33 @@ namespace TTT_ClassLibrary
             return true;
         }
 
-        public bool CheckForWin()
+        public char CheckForWin()
         {
             for (int i = 0; i < 3; i++)
             {
                 if (CheckRowForWin(i, 'X') >= 3 ||
-                    CheckRowForWin(i, 'O') >= 3 ||
-                    CheckColumnForWin(i, 'X') >= 3 ||
+                    CheckColumnForWin(i, 'X') >= 3)
+                {
+                    return 'X';
+                }
+
+                if (CheckRowForWin(i, 'O') >= 3 ||
                     CheckColumnForWin(i, 'O') >= 3)
                 {
-                    return true;
+                    return 'O';
                 }
             }
             if (CheckSlashForWin('X') >= 3 ||
-                CheckSlashForWin('O') >= 3)
+                CheckBackSlashForWin('X') >= 3)
             {
-                return true;
+                return 'X';
             }
-            if (CheckBackSlashForWin('X') >= 3 ||
+            if (CheckSlashForWin('O') >= 3 ||
                 CheckBackSlashForWin('O') >= 3)
             {
-                return true;
+                return 'O';
             }
-            return false;
+            return '\0';
         }
 
         public int CheckRowForWin(int row, char checkFor)

@@ -127,123 +127,125 @@ namespace TicTacToeTests
         }
 
         [TestMethod()]
-        public void CheckForWinShouldReturnTrueIfThereAreThreeXsInARow()
+        public void CheckForWinShouldReturnXIfThereAreThreeXsInARow()
         {
             //Three Across the Top
             BoardManager board = new BoardManager();
+            Assert.AreEqual('\0', board.CheckForWin());
             board.ForceMove(new Tuple<int, int>(0, 0), 'X');
             board.ForceMove(new Tuple<int, int>(1, 0), 'X');
             board.ForceMove(new Tuple<int, int>(2, 0), 'X');
-            Assert.AreEqual(true, board.CheckForWin());
+            Assert.AreEqual('X', board.CheckForWin());
 
             //Three Across the Middle
             board = new BoardManager();
             board.ForceMove(new Tuple<int, int>(0, 1), 'X');
             board.ForceMove(new Tuple<int, int>(1, 1), 'X');
             board.ForceMove(new Tuple<int, int>(2, 1), 'X');
-            Assert.AreEqual(true, board.CheckForWin());
+            Assert.AreEqual('X', board.CheckForWin());
 
             //Three Across the Bottom
             board = new BoardManager();
             board.ForceMove(new Tuple<int, int>(0, 2), 'X');
             board.ForceMove(new Tuple<int, int>(1, 2), 'X');
             board.ForceMove(new Tuple<int, int>(2, 2), 'X');
-            Assert.AreEqual(true, board.CheckForWin());
+            Assert.AreEqual('X', board.CheckForWin());
 
             //Three Down the Left Side
             board = new BoardManager();
             board.ForceMove(new Tuple<int, int>(0, 0), 'X');
             board.ForceMove(new Tuple<int, int>(0, 1), 'X');
             board.ForceMove(new Tuple<int, int>(0, 2), 'X');
-            Assert.AreEqual(true, board.CheckForWin());
+            Assert.AreEqual('X', board.CheckForWin());
 
             //Three Down the Middle
             board = new BoardManager();
             board.ForceMove(new Tuple<int, int>(1, 0), 'X');
             board.ForceMove(new Tuple<int, int>(1, 1), 'X');
             board.ForceMove(new Tuple<int, int>(1, 2), 'X');
-            Assert.AreEqual(true, board.CheckForWin());
+            Assert.AreEqual('X', board.CheckForWin());
 
             //Three Down the Right Side
             board = new BoardManager();
             board.ForceMove(new Tuple<int, int>(2, 0), 'X');
             board.ForceMove(new Tuple<int, int>(2, 1), 'X');
             board.ForceMove(new Tuple<int, int>(2, 2), 'X');
-            Assert.AreEqual(true, board.CheckForWin());
+            Assert.AreEqual('X', board.CheckForWin());
 
             //Three In A Slash
             board = new BoardManager();
             board.ForceMove(new Tuple<int, int>(2, 0), 'X');
             board.ForceMove(new Tuple<int, int>(1, 1), 'X');
             board.ForceMove(new Tuple<int, int>(0, 2), 'X');
-            Assert.AreEqual(true, board.CheckForWin());
+            Assert.AreEqual('X', board.CheckForWin());
 
             //Three In A Backslash
             board = new BoardManager();
             board.ForceMove(new Tuple<int, int>(0, 0), 'X');
             board.ForceMove(new Tuple<int, int>(1, 1), 'X');
             board.ForceMove(new Tuple<int, int>(2, 2), 'X');
-            Assert.AreEqual(true, board.CheckForWin());
+            Assert.AreEqual('X', board.CheckForWin());
         }
 
         [TestMethod()]
-        public void CheckForWinShouldReturnTrueIfThereAreThreeOsInARow()
+        public void CheckForWinShouldReturnOIfThereAreThreeOsInARow()
         {
             //Three Across the Top
             BoardManager board = new BoardManager();
+            Assert.AreEqual('\0', board.CheckForWin());
             board.ForceMove(new Tuple<int, int>(0, 0), 'O');
             board.ForceMove(new Tuple<int, int>(1, 0), 'O');
             board.ForceMove(new Tuple<int, int>(2, 0), 'O');
-            Assert.AreEqual(true, board.CheckForWin());
+            Assert.AreEqual('O', board.CheckForWin());
 
             //Three Across the Middle
             board = new BoardManager();
             board.ForceMove(new Tuple<int, int>(0, 1), 'O');
             board.ForceMove(new Tuple<int, int>(1, 1), 'O');
             board.ForceMove(new Tuple<int, int>(2, 1), 'O');
-            Assert.AreEqual(true, board.CheckForWin());
+            Assert.AreEqual('O', board.CheckForWin());
 
             //Three Across the Bottom
             board = new BoardManager();
             board.ForceMove(new Tuple<int, int>(0, 2), 'O');
             board.ForceMove(new Tuple<int, int>(1, 2), 'O');
             board.ForceMove(new Tuple<int, int>(2, 2), 'O');
-            Assert.AreEqual(true, board.CheckForWin());
+            Assert.AreEqual('O', board.CheckForWin());
 
             //Three Down the Left Side
             board = new BoardManager();
             board.ForceMove(new Tuple<int, int>(0, 0), 'O');
             board.ForceMove(new Tuple<int, int>(0, 1), 'O');
             board.ForceMove(new Tuple<int, int>(0, 2), 'O');
-            Assert.AreEqual(true, board.CheckForWin());
+            Assert.AreEqual('O', board.CheckForWin());
 
             //Three Down the Middle
             board = new BoardManager();
             board.ForceMove(new Tuple<int, int>(1, 0), 'O');
             board.ForceMove(new Tuple<int, int>(1, 1), 'O');
             board.ForceMove(new Tuple<int, int>(1, 2), 'O');
-            Assert.AreEqual(true, board.CheckForWin());
+            Assert.AreEqual('O', board.CheckForWin());
 
             //Three Down the Right Side
             board = new BoardManager();
             board.ForceMove(new Tuple<int, int>(2, 0), 'O');
             board.ForceMove(new Tuple<int, int>(2, 1), 'O');
             board.ForceMove(new Tuple<int, int>(2, 2), 'O');
-            Assert.AreEqual(true, board.CheckForWin());
+            Assert.AreEqual('O', board.CheckForWin());
 
             //Three In A Slash
             board = new BoardManager();
             board.ForceMove(new Tuple<int, int>(2, 0), 'O');
             board.ForceMove(new Tuple<int, int>(1, 1), 'O');
             board.ForceMove(new Tuple<int, int>(0, 2), 'O');
-            Assert.AreEqual(true, board.CheckForWin());
+            Assert.AreEqual('O', board.CheckForWin());
 
             //Three In A Backslash
             board = new BoardManager();
             board.ForceMove(new Tuple<int, int>(0, 0), 'O');
             board.ForceMove(new Tuple<int, int>(1, 1), 'O');
             board.ForceMove(new Tuple<int, int>(2, 2), 'O');
-            Assert.AreEqual(true, board.CheckForWin());
+            Assert.AreEqual('O', board.CheckForWin());
         }
 
         [TestMethod()]
