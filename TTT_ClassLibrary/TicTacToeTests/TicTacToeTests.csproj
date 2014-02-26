@@ -58,6 +58,7 @@
     <Compile Include="HumanPlayerTest.cs" />
     <Compile Include="PresentationManagerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestIOTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TTT_ClassLibrary\TTT_ClassLibrary.csproj">

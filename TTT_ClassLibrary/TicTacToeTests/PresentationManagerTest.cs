@@ -101,11 +101,11 @@ namespace TicTacToeTests
             target.PrintBoard(game.board.boardArray);
             game.board.LogMove(new Tuple<int, int>(1, 1));
             target.PrintBoard(game.board.boardArray);
-            game.board.LogMove(new Tuple<int, int>(1, 1));
+            game.board.LogMove(new Tuple<int, int>(0, 0));
             target.PrintBoard(game.board.boardArray);
-            game.board.LogMove(new Tuple<int, int>(1, 1));
+            game.board.LogMove(new Tuple<int, int>(2, 1));
             target.PrintBoard(game.board.boardArray);
-            game.board.LogMove(new Tuple<int, int>(1, 1));
+            game.board.LogMove(new Tuple<int, int>(1, 2));
             target.PrintBoard(game.board.boardArray);
         }
         

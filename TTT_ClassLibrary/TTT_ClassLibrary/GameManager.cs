@@ -15,6 +15,11 @@ namespace TTT_ClassLibrary
             presenter = new PresentationManager();
         }
 
+        public GameManager(PresentationManager pm)
+        {
+            presenter = pm;
+        }
+
         public Game MakeGame()
         {
             game = new Game();
@@ -57,13 +62,16 @@ namespace TTT_ClassLibrary
                 int loopLimit = 3;
                 while (game.IsMoveValid(coordinatesToLog) != true)
                 {
-                    presenter.Send("Sorry - that square is already taken.");
-                    coordinatesToLog = GetNextTuple();
                     loopCount++;
                     if (loopCount >= loopLimit)
                     {
                         presenter.Send("Lets just give you a random move...");
                         coordinatesToLog = game.ForceMove();
+                    }
+                    else
+                    {
+                        presenter.Send("Sorry - that square is already taken.");
+                        coordinatesToLog = GetNextTuple();
                     }
                 }
                 LogMove(coordinatesToLog);
@@ -71,7 +79,7 @@ namespace TTT_ClassLibrary
                 presenter.PrintBoard(game.GetBoard());
             }
             ReportGameEnd();
-            Console.ReadLine();
+            presenter.IO.Input();
             if (presenter.PlayAgain())
             {
                 StartGame();
@@ -99,12 +107,12 @@ namespace TTT_ClassLibrary
             if (game.GetActivePlayerID() == 'X')
             {
                 presenter.Send("It is Player 1 (X's) turn.");
-                Console.ReadLine();
+                presenter.IO.Input();
             }
             else
             {
                 presenter.Send("It is Player 2 (O's) turn.");
-                Console.ReadLine();
+                presenter.IO.Input();
             }
             if (game.NextMove() == null)
             {
