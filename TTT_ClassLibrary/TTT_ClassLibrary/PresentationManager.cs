@@ -40,7 +40,7 @@ namespace TTT_ClassLibrary
 
         public void OutputLn(string message)
         {
-            lastOutString = message;
+            lastOutString = message + "\n";
         }
 
         public void Output(string message)
@@ -86,7 +86,6 @@ namespace TTT_ClassLibrary
                 "Would you like to play against a Human, or a Computer?\n" +
                 "Or Would you like to watch a match between computers?\n\n" +
                 "Enter either \"Human\", \"Computer\", or \"Computers\".");
-            //string answer = Console.ReadLine();
             string answer = IO.Input();
             if (answer == null)
                 answer = "";
@@ -103,7 +102,6 @@ namespace TTT_ClassLibrary
                 {
                     Send("That was not a valid option. Please try again.\n" +
                     "Enter either \"Human\", \"Computer\", or \"Computers\".");
-                    //answer = Console.ReadLine();
                     answer = IO.Input();
                     if (answer == null)
                         answer = "";
@@ -115,7 +113,6 @@ namespace TTT_ClassLibrary
         public bool HumanGoesFirst()
         {
             Send("Would you like to go first, or second? (Enter either \"First\" or \"Second\")");
-            //string answer = Console.ReadLine();
             string answer = IO.Input();
             if (answer == null)
                 answer = "";
@@ -131,7 +128,6 @@ namespace TTT_ClassLibrary
                 else
                 {
                     Send("Please enter either \"First\" or \"Second.\"");
-                    //answer = Console.ReadLine();
                     answer = IO.Input();
                     if (answer == null)
                         answer = "";
@@ -150,7 +146,6 @@ namespace TTT_ClassLibrary
         public bool PlayAgain()
         {
             Send("Would you like to play again? (Type either \"Yes\" or \"No\")");
-            //string answer = Console.ReadLine();
             string answer = IO.Input();
             if (answer == null)
                 answer = "";
@@ -166,7 +161,6 @@ namespace TTT_ClassLibrary
                 else
                 {
                     Send("Please enter either \"yes\" or \"no.\"");
-                    //answer = Console.ReadLine();
                     answer = IO.Input();
                     if (answer == null)
                         answer = "";
@@ -186,7 +180,6 @@ namespace TTT_ClassLibrary
         {
             Send("Enter an X coordinate between 0 and " + boardBoundaries + " (inclusive).");
             int xCoordinate;
-            //string answer = Console.ReadLine();
             string answer = IO.Input();
             if (int.TryParse(answer, out xCoordinate) == false)
                 xCoordinate = -100;
@@ -203,14 +196,12 @@ namespace TTT_ClassLibrary
                 {
                     Send("That was not a valid X coordinate. Please try again.\n" +
                     "Valid coordinates are between 0 and " + boardBoundaries + " (inclusive).");
-                    //answer = Console.ReadLine();
                     answer = IO.Input();
                     if (int.TryParse(answer, out xCoordinate) == false)
                         xCoordinate = -100;
                 }
             }
             Send("Enter a Y coordinate between 0 and " + boardBoundaries + " (inclusive).");
-            //answer = Console.ReadLine();
             answer = IO.Input();
             int yCoordinate;
             if (int.TryParse(answer, out yCoordinate) == false)
@@ -228,7 +219,6 @@ namespace TTT_ClassLibrary
                 {
                     Send("That was not a valid Y coordinate. Please try again.\n" +
                     "Valid coordinates are between 0 and " + boardBoundaries + " (inclusive).");
-                    //answer = Console.ReadLine();
                     answer = IO.Input();
                     if (int.TryParse(answer, out yCoordinate) == false)
                         yCoordinate = -100;

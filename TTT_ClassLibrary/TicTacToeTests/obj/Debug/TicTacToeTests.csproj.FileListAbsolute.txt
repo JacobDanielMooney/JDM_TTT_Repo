@@ -5,3 +5,5 @@ c:\users\jacob\documents\visual studio 2010\Projects\TTT_ClassLibrary\TicTacToeT
 c:\users\jacob\documents\visual studio 2010\Projects\TTT_ClassLibrary\TicTacToeTests\obj\Debug\TicTacToeTests.csprojResolveAssemblyReference.cache
 c:\users\jacob\documents\visual studio 2010\Projects\TTT_ClassLibrary\TicTacToeTests\obj\Debug\TicTacToeTests.dll
 c:\users\jacob\documents\visual studio 2010\Projects\TTT_ClassLibrary\TicTacToeTests\obj\Debug\TicTacToeTests.pdb
+C:\Users\Jacob\Documents\Visual Studio 2010\Projects\TTT_ClassLibrary\TicTacToeTests\bin\Debug\TTT_ClassLibrary_Accessor.dll
+C:\Users\Jacob\Documents\Visual Studio 2010\Projects\TTT_ClassLibrary\TicTacToeTests\bin\Debug\TTT_ClassLibrary_Accessor.pdb

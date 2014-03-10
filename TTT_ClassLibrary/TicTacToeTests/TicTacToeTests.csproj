@@ -54,6 +54,7 @@
     <Compile Include="ComputerPlayerTest.cs" />
     <Compile Include="CreatedMoveTest.cs" />
     <Compile Include="GameManagerTest.cs" />
+    <Compile Include="GameStateTest.cs" />
     <Compile Include="GameTest.cs" />
     <Compile Include="HumanPlayerTest.cs" />
     <Compile Include="PresentationManagerTest.cs" />
@@ -65,6 +66,9 @@
       <Project>{6DE4F955-7E8C-4DF4-9AED-A059E19EE337}</Project>
       <Name>TTT_ClassLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Shadow Include="Test References\TTT_ClassLibrary.accessor" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
