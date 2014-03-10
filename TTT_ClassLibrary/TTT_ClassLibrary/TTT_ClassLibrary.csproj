@@ -41,12 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoardManager.cs" />
+    <Compile Include="MiniMax.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="ComputerPlayer.cs" />
     <Compile Include="CreatedMove.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="HumanPlayer.cs" />
+    <Compile Include="Move.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PresentationManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

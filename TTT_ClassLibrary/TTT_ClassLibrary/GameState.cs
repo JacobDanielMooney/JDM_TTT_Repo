@@ -10,7 +10,7 @@ namespace TTT_ClassLibrary
         public char[,] boardState;
         public char playerID;
         public int depthLevel;
-        public int rank;
+        public int choice;
         List<GameState> childBoardStates = new List<GameState>();
 
         public GameState(char id, int depth, char[,] board)
@@ -34,17 +34,17 @@ namespace TTT_ClassLibrary
         {
             if (CheckForTie())
             {
-                rank = 0;
+                choice = 0;
             }
             else if (CheckForWin() != '\0')
             {
                 if (CheckForWin() == playerID)
                 {
-                    rank = 1;
+                    choice = 1;
                 }
                 else
                 {
-                    rank = -1;
+                    choice = -1;
                 }
             }
         }
@@ -96,16 +96,16 @@ namespace TTT_ClassLibrary
             int[] childRanks = new int[childBoardStates.Count];
             for (int i = 0; i < childBoardStates.Count; i++)
             {
-                childRanks[i] = childBoardStates[i].rank;
+                childRanks[i] = childBoardStates[i].choice;
             }
 
             if (depthLevel % 2 == 0)
             {
-                rank = childRanks.Max();
+                choice = childRanks.Max();
             }
             else
             {
-                rank = childRanks.Min();
+                choice = childRanks.Min();
             }
         }
 
@@ -113,17 +113,17 @@ namespace TTT_ClassLibrary
         {
             if (CheckForTie())
             {
-                rank = 0;
+                choice = 0;
             }
             else if (CheckForWin() != '\0')
             {
                 if (depthLevel % 2 == 1)
                 {
-                    rank = 1;
+                    choice = 1;
                 }
                 else
                 {
-                    rank = -1;
+                    choice = -1;
                 }
             }
             else
@@ -131,16 +131,16 @@ namespace TTT_ClassLibrary
                 int[] childRanks = new int[childBoardStates.Count];
                 for (int i = 0; i < childBoardStates.Count; i++)
                 {
-                    childRanks[i] = childBoardStates[i].rank;
+                    childRanks[i] = childBoardStates[i].choice;
                 }
 
                 if (depthLevel % 2 == 0)
                 {
-                    rank = childRanks.Max();
+                    choice = childRanks.Max();
                 }
                 else
                 {
-                    rank = childRanks.Min();
+                    choice = childRanks.Min();
                 }
             }
         }

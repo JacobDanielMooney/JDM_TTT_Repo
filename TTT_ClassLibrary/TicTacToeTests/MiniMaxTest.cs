@@ -6,11 +6,12 @@ namespace TicTacToeTests
 {
 
     [TestClass()]
-    public class GameStateTest
+    public class MiniMaxTest
     {
 
 
         private TestContext testContextInstance;
+
 
         public TestContext TestContext
         {
@@ -54,14 +55,15 @@ namespace TicTacToeTests
         //
         #endregion
 
+
         [TestMethod()]
-        public void GameStateConstructorTest()
+        public void GetMoveTest()
         {
-            char id = 'X';
-            int depth = 0; 
-            char[,] board = new char[3, 3];
-            GameState target = new GameState(id, depth, board);
-            Assert.AreEqual(1, target.choice);
+            MiniMax target = new MiniMax();
+            Move recievedMove = target.GetMove(0, new char[3, 3], 'X');
+            int actual = recievedMove.value;
+            int expected = 1;
+            Assert.AreEqual(expected, actual);
         }
     }
 }
