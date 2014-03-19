@@ -7,57 +7,92 @@ namespace TTT_ClassLibrary
 {
     public class MiniMax
     {
-        public Move GetMove(int depth, char[,] boardState, char playerID)
+        public Tuple<int,int> GetMove(char[,] boardState, char playerID)
         {
-            if (CheckForTie(boardState))
+            List<Move> possibleMoves = new List<Move>();
+            for (int y = 0; y < boardState.GetLength(0); y++)
             {
-                return new Move(depth, 0);
+                for (int x = 0; x < boardState.GetLength(0); x++)
+                {
+                    char[,] newBoardState = NewBoardState(boardState);
+                    if (newBoardState[y, x] == '\0')
+                    {
+                        newBoardState[y, x] = playerID;
+                        char nextPlayerID;
+                        if (playerID == 'X')
+                        {
+                            nextPlayerID = 'O';
+                        }
+                        else
+                        {
+                            nextPlayerID = 'X';
+                        }
+                        possibleMoves.Add(HighScoreOfSquare(x, y, newBoardState, 1, nextPlayerID));
+                    }
+
+                }
             }
-            else if (CheckForWin(boardState) != '\0')
+
+            return possibleMoves.Max<Move>().coordinates;
+        }
+
+        public Move HighScoreOfSquare(int xCoord, int yCoord, char[,] boardState, int depth, char playerID)
+        {
+            if (Tie(boardState))
             {
-                if (depth % 2 == 1)
+                return new Move(0, xCoord, yCoord);
+            }
+
+            if (Win(boardState))
+            {
+                return new Move(GetScore(depth), xCoord, yCoord);
+            }
+
+            List<Move> childMoves = new List<Move>();
+
+            for (int y = 0; y < boardState.GetLength(0); y++)
+            {
+                for (int x = 0; x < boardState.GetLength(0); x++)
                 {
-                    return new Move(depth, 1);
+                    char[,] newBoardState = NewBoardState(boardState);
+                    if (newBoardState[y, x] == '\0')
+                    {
+                        char nextPlayerID;
+                        if (playerID == 'X')
+                        {
+                            nextPlayerID = 'O';
+                        }
+                        else
+                        {
+                            nextPlayerID = 'X';
+                        }
+
+                        int nextDepth = depth + 1;
+                        childMoves.Add(HighScoreOfSquare(x, y, newBoardState, nextDepth, nextPlayerID));
+                    }
                 }
-                else
-                {
-                    return new Move(depth, -1);
-                }
+            }
+
+            if (depth % 2 == 0)
+            {
+                return new Move(childMoves.Max<Move>().score, xCoord, yCoord);
             }
             else
             {
-                List<Move> possibleMoves = new List<Move>();
-                for (int y = 0; y < boardState.GetLength(0); y++)
-                {
-                    for (int x = 0; x < boardState.GetLength(0); x++)
-                    {
-                        char[,] nextBoardState = NewBoardState(boardState);
-                        if (nextBoardState[y, x] == '\0')
-                        {
-                            nextBoardState[y, x] = playerID;
-                            char nextID;
-                            if (playerID == 'X')
-                            {
-                                nextID = 'O';
-                            }
-                            else
-                            {
-                                nextID = 'X';
-                            }
-                            possibleMoves.Add(GetMove(depth + 1, nextBoardState, nextID));
-                        }
-                    }
-                }
-                if (depth % 2 == 0)
-                {
-                    return possibleMoves.Max<Move>();
-                }
-                else
-                {
-                    return possibleMoves.Min<Move>();
-                }
+                return new Move(childMoves.Min<Move>().score, xCoord, yCoord);
             }
-            
+        }
+
+        public int GetScore(int depth)
+        {
+            if (depth % 2 == 1)
+            {
+                return 1000 - depth;
+            }
+            else
+            {
+                return -1000 + depth;
+            }
         }
 
         public char[,] NewBoardState(char[,] oldBoard)
@@ -73,9 +108,9 @@ namespace TTT_ClassLibrary
             return newBoard;
         }
 
-        public bool CheckForTie(char[,] boardState)
+        public bool Tie(char[,] boardState)
         {
-            if (CheckForWin(boardState) != '\0')
+            if (Win(boardState) == true)
             {
                 return false;
             }
@@ -91,33 +126,26 @@ namespace TTT_ClassLibrary
             return true;
         }
 
-        public char CheckForWin(char[,] boardState)
+        public bool Win(char[,] boardState)
         {
             for (int i = 0; i < 3; i++)
             {
                 if (CheckRowForWin(i, 'X', boardState) >= 3 ||
-                    CheckColumnForWin(i, 'X', boardState) >= 3)
-                {
-                    return 'X';
-                }
-
-                if (CheckRowForWin(i, 'O', boardState) >= 3 ||
+                    CheckColumnForWin(i, 'X', boardState) >= 3 ||
+                    CheckRowForWin(i, 'O', boardState) >= 3 ||
                     CheckColumnForWin(i, 'O', boardState) >= 3)
                 {
-                    return 'O';
+                    return true;
                 }
             }
             if (CheckSlashForWin('X', boardState) >= 3 ||
-                CheckBackSlashForWin('X', boardState) >= 3)
-            {
-                return 'X';
-            }
-            if (CheckSlashForWin('O', boardState) >= 3 ||
+                CheckBackSlashForWin('X', boardState) >= 3 ||
+                CheckSlashForWin('O', boardState) >= 3 ||
                 CheckBackSlashForWin('O', boardState) >= 3)
             {
-                return 'O';
+                return true;
             }
-            return '\0';
+            return false;
         }
 
         private int CheckRowForWin(int row, char checkFor, char[,] boardState)

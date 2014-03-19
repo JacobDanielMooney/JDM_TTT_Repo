@@ -57,13 +57,109 @@ namespace TicTacToeTests
 
 
         [TestMethod()]
+        public void CompCorrectlyIdentifiesTheWin()
+        {
+            char[,] givenBoard = new char[3, 3];
+            //givenBoard[0, 0] = 'X';
+            //givenBoard[0, 1] = 'X';
+            MiniMax target = new MiniMax();
+            Tuple<int,int> recievedMove = target.GetMove(givenBoard, 'X');
+            int debug = 0;
+        }
+
+        [TestMethod()]
+        public void BestMaxScore()
+        {
+            MiniMax target = new MiniMax();
+            int depth = 0;
+            int expect = -1000;
+            int actual = target.GetScore(depth);
+            Assert.AreEqual(expect, actual);
+        }
+
+        [TestMethod()]
+        public void BestMinScore()
+        {
+            MiniMax target = new MiniMax();
+            int depth = 0;
+            int expect = 1000;
+            int actual = target.GetScore(depth);
+            Assert.AreEqual(expect, actual);
+        }
+
+        [TestMethod()]
+        public void BestMinAndMaxScoreAtDepth()
+        {
+            MiniMax target = new MiniMax();
+            int depth = 5;
+            int expect = -995;
+            int actual = target.GetScore(depth);
+            Assert.AreEqual(expect, actual);
+            expect = 995;
+            actual = target.GetScore(depth);
+            Assert.AreEqual(expect, actual);
+        }
+
+        [TestMethod()]
+        public void ReturnsScoreInFinalGameState()
+        {
+            MiniMax target = new MiniMax();
+            int depth = 5;
+            int expected = 995;
+            char[,] givenBoard = new char[3,3];
+            givenBoard[0,0] = 'X';
+            givenBoard[2,0] = 'O';
+            givenBoard[0,1] = 'X';
+            givenBoard[2,1] = 'O';
+            givenBoard[0,2] = 'X';
+            int actual = 0;
+            if (target.Win(givenBoard) == true)
+            {
+                actual = target.GetScore(depth);
+            }
+            Assert.AreEqual(expected, actual);
+
+            givenBoard = returnTiedBoard();
+            expected = 0;
+            if (target.Tie(givenBoard))
+            {
+                actual = 0;
+            }
+            Assert.AreEqual(expected, actual);
+            
+        }
+
+        [TestMethod()]
         public void GetMoveTest()
         {
             MiniMax target = new MiniMax();
-            Move recievedMove = target.GetMove(0, new char[3, 3], 'X');
-            int actual = recievedMove.value;
-            int expected = 1;
-            Assert.AreEqual(expected, actual);
+            int depth = 7;
+            char[,] givenBoard = new char[3, 3];
+            givenBoard[0, 0] = 'X';
+            givenBoard[0, 1] = 'X';
+            givenBoard[0, 2] = 'X';
+            Move returnedScore = target.HighScoreOfSquare(2, 0, givenBoard, depth, 'X');
+            Assert.AreEqual(993, returnedScore.score);
+
+            depth++;
+            givenBoard[0, 0] = 'O';
+            givenBoard[0, 1] = 'O';
+            givenBoard[0, 2] = 'O';
+            returnedScore = target.HighScoreOfSquare(2, 0, givenBoard, depth, 'O');
+            Assert.AreEqual(-992, returnedScore.score);
+
+            givenBoard = returnTiedBoard();
+            returnedScore = returnedScore = target.HighScoreOfSquare(2, 2, givenBoard, depth, 'X');
+            Assert.AreEqual(0, returnedScore.score);
+        }
+
+        public char[,] returnTiedBoard()
+        {
+            char[,] result = new char[3, 3]{{'Q','Q','Q'},
+                                            {'Q','Q','Q'},
+                                            {'Q','Q','Q'}};
+            return result;
+
         }
     }
 }

@@ -7,28 +7,28 @@ namespace TTT_ClassLibrary
 {
     public class Move : IComparable<Move>
     {
-        public int depth;
-        public int value;
+        public int score;
+        public Tuple<int, int> coordinates;
 
-        public Move(int _depth, int _value)
+        public Move(int _value, int xCoord, int yCoord)
         {
-            depth = _depth;
-            value = _value;
+            score = _value;
+            coordinates = new Tuple<int, int>(xCoord, yCoord);
         }
 
         int IComparable<Move>.CompareTo(Move other)
         {
-            if (this.value > other.value)
+            if (Math.Abs(this.score) > Math.Abs(other.score))
             {
                 return 1;
             }
-            else if (this.value == other.value)
+            else if (Math.Abs(this.score) == Math.Abs(other.score))
             {
-                if (this.depth < other.depth)
+                if (this.score > other.score)
                 {
                     return 1;
                 }
-                else if (this.depth == other.depth)
+                else if (this.score == other.score)
                 {
                     return 0;
                 }
