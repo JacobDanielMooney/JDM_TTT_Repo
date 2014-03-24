@@ -33,6 +33,24 @@ namespace TTT_ClassLibrary
                 }
             }
 
+            int maxScore = possibleMoves.Max<Move>().score;
+            List<Move> maxMoves = new List<Move>();
+            foreach (Move m in possibleMoves)
+            {
+                if (m.score == maxScore)
+                {
+                    maxMoves.Add(m);
+                }
+            }
+
+            foreach (Move m in maxMoves)
+            {
+                if (m.coordinates.Item1 == 1 && m.coordinates.Item2 == 1)
+                {
+                    return m.coordinates;
+                }
+            }
+
             return possibleMoves.Max<Move>().coordinates;
         }
 
@@ -57,6 +75,7 @@ namespace TTT_ClassLibrary
                     char[,] newBoardState = NewBoardState(boardState);
                     if (newBoardState[y, x] == '\0')
                     {
+                        newBoardState[y, x] = playerID;
                         char nextPlayerID;
                         if (playerID == 'X')
                         {

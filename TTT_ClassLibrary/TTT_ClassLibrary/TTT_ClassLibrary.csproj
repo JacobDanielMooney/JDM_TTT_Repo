@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="BoardManager.cs" />
     <Compile Include="MiniMax.cs" />
-    <Compile Include="GameState.cs" />
     <Compile Include="ComputerPlayer.cs" />
     <Compile Include="CreatedMove.cs" />
     <Compile Include="Game.cs" />

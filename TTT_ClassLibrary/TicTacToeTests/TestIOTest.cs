@@ -85,7 +85,8 @@ namespace TicTacToeTests
             TestIO io = (TestIO)target.IO;
             string actual = io.lastOutString;
             string expected = "testString";
-            Assert.AreEqual(expected, actual);
+            StringAssert.Equals(expected, actual);
+            //Assert.AreEqual(expected, actual);
         }
 
         [TestMethod()]
@@ -101,7 +102,7 @@ namespace TicTacToeTests
             testManager.game.board.ForceMove(new Tuple<int,int>(1,0), 'X');
             testManager.game.board.ForceMove(new Tuple<int,int>(2,0), 'X');
             testManager.ReportGameEnd();
-            Assert.AreEqual("X's Win!", io.lastOutString);
+            StringAssert.Equals("X's Win!", io.lastOutString);
         }
     }
 }

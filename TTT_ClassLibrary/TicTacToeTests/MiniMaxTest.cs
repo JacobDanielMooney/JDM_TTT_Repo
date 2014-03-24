@@ -60,11 +60,38 @@ namespace TicTacToeTests
         public void CompCorrectlyIdentifiesTheWin()
         {
             char[,] givenBoard = new char[3, 3];
-            //givenBoard[0, 0] = 'X';
-            //givenBoard[0, 1] = 'X';
+            givenBoard[0, 0] = 'O';
+            givenBoard[0, 1] = 'O';
+            givenBoard[2, 2] = 'X';
+            givenBoard[2, 1] = 'X';
             MiniMax target = new MiniMax();
-            Tuple<int,int> recievedMove = target.GetMove(givenBoard, 'X');
-            int debug = 0;
+            Tuple<int,int> recievedMove = target.GetMove(givenBoard, 'O');
+            Tuple<int,int> expectedMove = new Tuple<int,int>(2,0);
+            Assert.AreEqual(expectedMove, recievedMove);
+        }
+
+        [TestMethod()]
+        public void FirstMoveTest()
+        {
+            char[,] givenBoard = new char[3, 3];
+            MiniMax target = new MiniMax();
+            Tuple<int, int> recievedMove = target.GetMove(givenBoard, 'X');
+            Tuple<int, int> expectedMove = new Tuple<int, int>(1, 1);
+            Assert.AreEqual(expectedMove, recievedMove);
+        }
+
+        [TestMethod()]
+        public void SpotTest()
+        {
+            char[,] givenBoard = new char[3, 3];
+            MiniMax target = new MiniMax();
+            givenBoard[1, 1] = 'X';
+            givenBoard[0, 0] = 'O';
+            givenBoard[0, 2] = 'X';
+            givenBoard[2, 0] = 'O';
+            Tuple<int, int> recievedMove = target.GetMove(givenBoard, 'X');
+            Tuple<int, int> expectedMove = new Tuple<int, int>(0, 1);
+            Assert.AreEqual(expectedMove, recievedMove);
         }
 
         [TestMethod()]
@@ -82,7 +109,7 @@ namespace TicTacToeTests
         {
             MiniMax target = new MiniMax();
             int depth = 0;
-            int expect = 1000;
+            int expect = -1000;
             int actual = target.GetScore(depth);
             Assert.AreEqual(expect, actual);
         }
@@ -92,10 +119,11 @@ namespace TicTacToeTests
         {
             MiniMax target = new MiniMax();
             int depth = 5;
-            int expect = -995;
+            int expect = 995;
             int actual = target.GetScore(depth);
             Assert.AreEqual(expect, actual);
-            expect = 995;
+            depth++;
+            expect = -994;
             actual = target.GetScore(depth);
             Assert.AreEqual(expect, actual);
         }

@@ -55,7 +55,6 @@
     <Compile Include="ComputerPlayerTest.cs" />
     <Compile Include="CreatedMoveTest.cs" />
     <Compile Include="GameManagerTest.cs" />
-    <Compile Include="GameStateTest.cs" />
     <Compile Include="GameTest.cs" />
     <Compile Include="HumanPlayerTest.cs" />
     <Compile Include="PresentationManagerTest.cs" />
