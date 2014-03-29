@@ -95,6 +95,23 @@ namespace TicTacToeTests
         }
 
         [TestMethod()]
+        public void CorrectlyTakesCorner()
+        {
+            char[,] givenBoard = new char[3, 3];
+            MiniMax target = new MiniMax();
+            givenBoard[1, 1] = 'X';
+            Tuple<int, int> recievedMove = target.GetMove(givenBoard, 'O');
+            Tuple<int, int> sideMoveOne = new Tuple<int, int>(1, 0);
+            Tuple<int, int> sideMoveTwo = new Tuple<int, int>(0, 1);
+            Tuple<int, int> sideMoveThree = new Tuple<int, int>(2, 1);
+            Tuple<int, int> sideMoveFour = new Tuple<int, int>(1, 2);
+            Assert.AreNotEqual(sideMoveOne, recievedMove);
+            Assert.AreNotEqual(sideMoveTwo, recievedMove);
+            Assert.AreNotEqual(sideMoveThree, recievedMove);
+            Assert.AreNotEqual(sideMoveFour, recievedMove);
+        }
+
+        [TestMethod()]
         public void BestMaxScore()
         {
             MiniMax target = new MiniMax();

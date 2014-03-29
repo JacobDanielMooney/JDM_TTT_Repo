@@ -66,7 +66,7 @@ namespace TTT_ClassLibrary
                 return new Move(GetScore(depth), xCoord, yCoord);
             }
 
-            List<Move> childMoves = new List<Move>();
+            Move maxChildMove = new Move(0, 1, 1);
 
             for (int y = 0; y < boardState.GetLength(0); y++)
             {
@@ -87,18 +87,43 @@ namespace TTT_ClassLibrary
                         }
 
                         int nextDepth = depth + 1;
-                        childMoves.Add(HighScoreOfSquare(x, y, newBoardState, nextDepth, nextPlayerID));
+                        Move childMove = HighScoreOfSquare(x, y, newBoardState, nextDepth, nextPlayerID);
+                        if (Math.Abs(childMove.score) > Math.Abs(maxChildMove.score))
+                        {
+                            maxChildMove = childMove;
+                        }
+                        else if (Math.Abs(childMove.score) == Math.Abs(maxChildMove.score))
+                        {
+                            if(childMove.score > maxChildMove.score)
+                            {
+                                if (depth % 2 == 0)
+                                {
+                                    maxChildMove = childMove;
+                                }
+                            }
+                            else if (IsSideMove(maxChildMove))
+                            {
+                                maxChildMove = childMove;
+                            }
+                        }
                     }
                 }
             }
+            return maxChildMove;
+        }
 
-            if (depth % 2 == 0)
+        public bool IsSideMove(Move move)
+        {
+            if (move.coordinates.Item1 == 1 && move.coordinates.Item2 == 0 ||
+                move.coordinates.Item1 == 0 && move.coordinates.Item2 == 1 ||
+                move.coordinates.Item1 == 2 && move.coordinates.Item2 == 1 ||
+                move.coordinates.Item1 == 1 && move.coordinates.Item2 == 2)
             {
-                return new Move(childMoves.Max<Move>().score, xCoord, yCoord);
+                return true;
             }
             else
             {
-                return new Move(childMoves.Min<Move>().score, xCoord, yCoord);
+                return false;
             }
         }
 
